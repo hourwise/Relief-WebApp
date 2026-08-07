@@ -1,5 +1,9 @@
 # Relief Website - Scaffolding Complete ✅
 
+> ⚠️ **SUPERSEDED** — This scaffolding summary is historical and contains
+> outdated details. See [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) for
+> the current, authoritative project status.
+
 ## What Was Built
 
 ### Phase 1 Foundation - Complete ✅
@@ -106,20 +110,16 @@ All variables documented in `.env.example`:
 
 **No Secrets Added Yet** - Waiting for security review
 
-```
-VITE_EMAIL_INFO=info@relief-domain.co.uk
-VITE_EMAIL_SUPPORT=support@relief-domain.co.uk
-VITE_EMAIL_PRIVACY=privacy@relief-domain.co.uk
-VITE_EMAIL_HELLO=hello@relief-domain.co.uk
-```
+No email addresses are configured yet; the final domain is pending. See `.env.example` for current variables.
 
-To add after security review:
+To add after security review (backend/Cloudflare Worker side only):
 ```
-VITE_RESEND_API_KEY=xxx  (⚠️ NEVER in frontend - backend only)
 VITE_SUPABASE_URL=xxx
 VITE_SUPABASE_ANON_KEY=xxx
 VITE_ANALYTICS_ID=xxx
 ```
+
+⚠️ There is deliberately no frontend email API key (no Resend-style key in `VITE_` variables): anything `VITE_` is exposed to browser code. Resend credentials belong only on the server.
 
 ## Getting Started
 

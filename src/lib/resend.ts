@@ -196,17 +196,21 @@ export async function subscribeNewsletter(email: string): Promise<APIResponse<vo
  *    - Send via Resend API
  *    - Log appropriately (never log sensitive data)
  *
- * 3. Set up email addresses in Resend:
- *    - info@relief-domain.co.uk
- *    - support@relief-domain.co.uk
- *    - privacy@relief-domain.co.uk
- *    - hello@relief-domain.co.uk
+ * 3. Intended architecture (do NOT put any Resend credential in frontend code):
  *
- * 4. Configure CORS for backend calls
+ *    Browser
+ *      -> Cloudflare Worker / Pages Function (server-side endpoint)
+ *      -> validation / anti-spam / rate limiting
+ *      -> Resend
  *
- * 5. Add CSRF protection tokens
+ * 4. Set up final email addresses in Resend once the domain exists
+ *    (potentially hello@, support@, privacy@, data@).
  *
- * 6. Consider adding:
+ * 5. Configure CORS for the Worker endpoint
+ *
+ * 6. Add CSRF protection tokens
+ *
+ * 7. Consider adding:
  *    - Cloudflare Turnstile for CAPTCHA
  *    - Spam detection
  *    - IP reputation checking

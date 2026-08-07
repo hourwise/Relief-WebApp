@@ -1,6 +1,9 @@
 # 📖 Relief Website - Quick Reference
 
-**Status:** Phase 1 Complete ✅ | **Ready:** Development & Phase 2
+> ⚠️ **SUPERSEDED** — Historical quick reference from scaffolding.
+> See [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) for current status.
+
+**Status:** In development — not deployed
 
 ---
 
@@ -212,12 +215,9 @@ export default MyPage
 ### Available Variables
 
 ```env
-VITE_EMAIL_INFO=info@relief-domain.co.uk
-VITE_EMAIL_SUPPORT=support@relief-domain.co.uk
-VITE_EMAIL_PRIVACY=privacy@relief-domain.co.uk
-VITE_EMAIL_HELLO=hello@relief-domain.co.uk
+# No email addresses or production domain are configured yet.
 VITE_SITE_NAME=Relief
-VITE_SITE_URL=https://relief-domain.co.uk
+# VITE_SITE_URL= (set when a real domain exists)
 ```
 
 ### Adding New Variables

@@ -6,7 +6,9 @@ export const BRAND = {
   name: import.meta.env.VITE_SITE_NAME || 'Relief',
   strapline: 'Find Comfort, Feel Relief',
   description: import.meta.env.VITE_SITE_DESCRIPTION || 'Find clean, private and accessible facilities nearby',
-  siteUrl: import.meta.env.VITE_SITE_URL || 'https://relief-domain.co.uk',
+  // No final domain exists yet. Set VITE_SITE_URL when one is live.
+  // Do not invent a production-looking URL as a default.
+  siteUrl: import.meta.env.VITE_SITE_URL || '',
 } as const
 
 export const COLORS = {
@@ -21,12 +23,12 @@ export const COLORS = {
   white: '#FFFFFF',
 } as const
 
-export const EMAIL = {
-  info: import.meta.env.VITE_EMAIL_INFO || 'info@relief-domain.co.uk',
-  support: import.meta.env.VITE_EMAIL_SUPPORT || 'support@relief-domain.co.uk',
-  privacy: import.meta.env.VITE_EMAIL_PRIVACY || 'privacy@relief-domain.co.uk',
-  hello: import.meta.env.VITE_EMAIL_HELLO || 'hello@relief-domain.co.uk',
-} as const
+/**
+ * Contact email addresses are NOT configured yet.
+ * Final addresses (potentially hello@, support@, privacy@, data@) will be
+ * centralised here once the domain and email setup exist. Do not hard-code
+ * invented production-looking addresses into public pages.
+ */
 
 /**
  * Feature flags - enable/disable functionality during development
@@ -34,11 +36,15 @@ export const EMAIL = {
 export const FEATURES = {
   supabaseEnabled: Boolean(import.meta.env.VITE_SUPABASE_URL),
   analyticsEnabled: Boolean(import.meta.env.VITE_ANALYTICS_ID),
-  resendEnabled: Boolean(import.meta.env.VITE_RESEND_API_KEY),
   blogEnabled: true,
-  contactFormEnabled: true,
-  addFacilityEnabled: true,
-  bugReportEnabled: true,
+  // Forms stay disabled until server-side submission, validation and
+  // moderation exist. There is intentionally NO frontend email/resend flag:
+  // private credentials must never exist in browser code (anything VITE_ is
+  // exposed to the client).
+  contactFormEnabled: false,
+  addFacilityEnabled: false,
+  bugReportEnabled: false,
+  gdprRequestEnabled: false,
 } as const
 
 /**
@@ -75,6 +81,7 @@ export const ROUTES = {
   gdpr: '/gdpr',
   contact: '/contact',
   support: '/support',
+  data: '/data',
   addFacility: '/add-facility',
   reportBug: '/report-bug',
   blog: '/blog',
@@ -90,16 +97,19 @@ export const ROUTES = {
 export const SEO_DEFAULTS = {
   siteName: BRAND.name,
   description: BRAND.description,
-  ogImage: `${BRAND.siteUrl}/og-image.png`,
-  twitterHandle: '@ReliefApp',
+  // No default OG image yet — pages must supply one before launch.
+  ogImage: '',
+  // No Twitter/X account exists yet — handle is published when one is live.
+  twitterHandle: '',
 } as const
 
 /**
- * App store links (placeholder - add actual links when available)
+ * App store links — intentionally null until real release URLs exist.
+ * The site must NOT navigate visitors to guessed store listings.
+ * Set these when a public build/release is actually available.
  */
 export const APP_STORE_LINKS = {
-  ios: 'https://apps.apple.com/app/relief',
-  android: 'https://play.google.com/store/apps/details?id=com.relief',
-  playlistOr: '#waitlist', // Placeholder
+  android: null, // Set when a public Android preview/release build exists
+  ios: null,     // Planned; no iOS build yet
 } as const
 

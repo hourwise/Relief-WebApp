@@ -31,13 +31,19 @@ export const createMetaTags = (metadata: SEOMetadata): string[] => {
     `<meta name="description" content="${escapeHtml(metadata.description)}" />`,
     `<meta property="og:title" content="${escapeHtml(metadata.title)}" />`,
     `<meta property="og:description" content="${escapeHtml(metadata.description)}" />`,
-    `<meta property="og:image" content="${metadata.ogImage}" />`,
     `<meta property="og:type" content="${metadata.ogType || 'website'}" />`,
     `<meta name="twitter:card" content="${metadata.twitterCard || 'summary_large_image'}" />`,
     `<meta name="twitter:title" content="${escapeHtml(metadata.title)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(metadata.description)}" />`,
-    `<meta name="twitter:handle" content="${SEO_DEFAULTS.twitterHandle}" />`,
   ]
+
+  if (metadata.ogImage) {
+    tags.push(`<meta property="og:image" content="${metadata.ogImage}" />`)
+  }
+
+  if (SEO_DEFAULTS.twitterHandle) {
+    tags.push(`<meta name="twitter:handle" content="${SEO_DEFAULTS.twitterHandle}" />`)
+  }
 
   if (metadata.keywords) {
     tags.push(`<meta name="keywords" content="${escapeHtml(metadata.keywords.join(', '))}" />`)

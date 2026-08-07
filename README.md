@@ -1,14 +1,16 @@
 # Relief Website
 
-A community-powered web app for finding clean, private, and accessible facilities nearby. Built with dignity, accessibility, and privacy at its core.
+The public companion website for **Relief** — a UK-focused mobile app for finding clean, private, and accessible facilities nearby. Built with dignity, accessibility, and privacy at its core. This site is the brand home, app info hub, support centre, privacy/legal centre, and data-transparency centre. It is **not** a browser version of the mobile app.
 
 **Strapline:** Find Comfort, Feel Relief.
 
 ## Project Status
 
-🚀 **Phase 1 - Foundation Complete**
+⚠️ **In development — not deployed.**
 
-The scaffolding is now complete! All core pages are built with placeholder content. Forms are disabled pending security review. Ready for Phase 2-6 implementation.
+The site builds and runs locally, core pages are in place, and public claims reflect the current product. Forms and email are intentionally disabled until secure server-side infrastructure exists. The website is Cloudflare-ready but not yet deployed.
+
+See [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) for the authoritative source-of-truth status.
 
 ## Quick Start
 
@@ -96,29 +98,35 @@ All routes are defined in `src/lib/config.ts`:
 |-------|------|--------|
 | `/` | Home | ✅ Ready |
 | `/about` | About | ✅ Ready |
-| `/contact` | Contact | 🔒 Form disabled (security review) |
+| `/contact` | Contact | 🔒 Form disabled (backend pending) |
 | `/support` | Support | ✅ Ready |
 | `/privacy` | Privacy | ✅ Ready (legal review needed) |
 | `/terms` | Terms | ✅ Ready (legal review needed) |
-| `/gdpr` | GDPR Rights | 🔒 Form disabled (security review) |
-| `/add-facility` | Add Facility | 🔒 Form disabled (security review) |
-| `/report-bug` | Report Bug | 🔒 Form disabled (security review) |
-| `/blog` | Blog Index | ⏳ Phase 4 |
-| `/blog/:slug` | Blog Post | ⏳ Phase 4 |
-| `/social` | Social Hub | ✅ Ready |
-| `/press` | Press Kit | ✅ Ready |
+| `/gdpr` | GDPR Rights | ✅ Ready (legal review needed; form disabled) |
+| `/add-facility` | Add Facility | 🔒 Disabled (future contribution gateway) |
+| `/report-bug` | Report Bug | 🔒 Form disabled (backend pending) |
+| `/blog` | Blog Index | ⏳ Coming soon (no posts yet) |
+| `/blog/:slug` | Blog Post | ⏳ Not implemented |
+| `/data` | Data & Sources | ✅ Ready |
+| `/social` | Social Hub | ✅ Ready (accounts not live) |
+| `/press` | Press Kit | ✅ Ready (assets pending) |
 
 ## Environment Variables
 
-See `.env.example` for all required variables.
+See `.env.example`. No secrets are required to run the site locally.
 
-**Current state:** No secrets added yet. All `.env` files with actual API keys are in `.gitignore`.
+⚠️ **Security:** anything prefixed `VITE_` is bundled into browser code and is public. There is deliberately **no `VITE_RESEND_API_KEY`** and no other email credential anywhere in the frontend. Intended architecture:
 
-Required before launch:
-- `VITE_RESEND_API_KEY` - Email API (backend only, never frontend)
-- `VITE_SUPABASE_URL` - Database (optional)
-- `VITE_SUPABASE_ANON_KEY` - Database (optional)
-- `VITE_ANALYTICS_ID` - Analytics (optional)
+```
+Browser
+  → Cloudflare Worker / Pages Function (server-side endpoint)
+  → validation / anti-spam / rate limiting
+  → Resend (transactional email)
+```
+
+Optional later additions (backend-only; never private credentials in `VITE_*`):
+- `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` - existing backend
+- `VITE_ANALYTICS_ID` - Analytics
 
 ## Design System
 
@@ -153,51 +161,50 @@ Secondary: **Plus Jakarta Sans**
 
 ## Current Implementation Status
 
-### ✅ Completed (Phase 1)
+### ✅ Working now
 
 - Project structure and build setup (Vite, React, TypeScript)
 - Tailwind CSS with brand theme tokens
-- React Router with all page routes
+- React Router with all page routes (including `/data`)
 - i18n setup with English translations
 - Layout components (Header, Footer, Layout)
-- All core pages with placeholder content
+- All core pages with truthful, placeholder-aware content
 - Hero and FeatureCard components
-- Type definitions (TypeScript interfaces)
-- Validation schemas (Zod - not yet wired to forms)
+- Type definitions and validation schemas (Zod, ready for backend use)
 - SEO metadata structure
-- Accessibility basics (focus states, ARIA labels, skip links)
-- Rate limiting utilities (client-side for UX)
-- Email service stubs (implementation pending)
-- Brand configuration and constants
+- Accessibility foundations (focus states, ARIA labels, skip links)
+- Client-side rate-limit utilities (UX only — the server enforces for real)
 
-### 🔒 Pending Security Review (Phase 3)
+### 🔒 Implemented but disabled
 
-- Contact form
-- Add facility form
-- Bug report form
-- GDPR request form
-- Email integration
+- Contact, Add Facility, Bug Report, GDPR request, newsletter forms
+- Email sending (Resend)
 
-**Important:** All form submissions are disabled pending:
-1. Backend API endpoints
-2. Server-side validation and sanitization
-3. Rate limiting by IP address
-4. CSRF protection
-5. Captcha integration (Cloudflare Turnstile recommended)
+**Why:** secure server-side submission does not exist yet. Forms stay disabled until there are backend endpoints with server-side validation, IP-based rate limiting, CSRF protection, and anti-spam (Cloudflare Turnstile recommended).
 
-### ⏳ Not Yet Started
+### ⏳ Planned / Coming later
 
-**Phase 2 - Core Pages:**
-- Final polish on legal pages (privacy, terms, GDPR require legal review)
+- Secure web forms via Cloudflare Worker / Pages Function
+- Resend transactional email (server-side only)
+- Live contact / GDPR / partnership submission
+- Facility contribution & correction gateway (moderated)
+- Blog posts (none published yet)
+- App store links (Android preview in preparation; iOS planned)
+- Real domain, email addresses, and social accounts
+- Final legal review of Privacy, Terms and GDPR pages
+- Accessibility audit against the WCAG AA target
 
-**Phase 3 - Forms & Email:**
-- Contact form submission backend
-- Facility submission backend
-- Bug report backend
-- GDPR request backend
-- Resend email integration
-- Supabase integration (optional)
-- Rate limiting enforcement
+## Deployment (intended)
+
+- **Source:** GitHub
+- **Frontend:** Cloudflare Pages (Vite build)
+- **DNS / HTTPS / CDN:** Cloudflare-managed
+- **Email routing:** Cloudflare Email Routing (incoming aliases, later)
+- **Web forms:** Cloudflare Worker / Pages Function (later, for secure submission)
+- **Outbound email:** Resend (later, server-side only)
+- **Backend:** existing Supabase where appropriate
+
+The project is **Cloudflare-ready, not Cloudflare-dependent**: no Cloudflare project, DNS, or domain is configured yet, and the site runs locally with normal `npm run dev` / `npm run build`.
 - Spam protection
 
 **Phase 4 - Blog & Social:**
@@ -394,5 +401,6 @@ For issues, questions, or contributions:
 
 **Built with 💚 for accessibility and dignity**
 
-#   R e l i e f - W e b A p p  
+#   R e l i e f - W e b A p p 
+ 
  

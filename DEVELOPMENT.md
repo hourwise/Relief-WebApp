@@ -375,22 +375,21 @@ npm run build
 npm run preview
 ```
 
-### Deploy to Vercel
+### Deploy to Cloudflare Pages (intended — not yet set up)
+
+Relief Web is intended to be deployed on **Cloudflare Pages** (Vite frontend), with Cloudflare-managed DNS, HTTPS and CDN. No Cloudflare project or domain is configured yet — this is a local-first, Cloudflare-ready project.
 
 ```bash
-# Option 1: Connect GitHub repo to Vercel dashboard
-# Option 2: Use Vercel CLI
-npm i -g vercel
-vercel login
-vercel deploy
+# Once a Cloudflare account/project exists, the typical flow is:
+# Connect the GitHub repo in the Cloudflare dashboard (build command:
+# npm run build, output directory: dist)
 ```
 
-### Environment Variables on Vercel
+### Environment Variables on Cloudflare Pages
 
-1. Go to project settings
-2. Environment Variables
-3. Add variables (don't include VITE_ prefix for Node.js)
-4. Redeploy to apply changes
+1. Go to project settings → Environment Variables
+2. Add variables as needed (never add private credentials that the browser must not see — anything `VITE_` is public)
+3. Redeploy to apply changes
 
 ## Troubleshooting
 

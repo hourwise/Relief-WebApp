@@ -1,8 +1,12 @@
 # 🎉 Relief Website Scaffolding - Complete Summary
 
+> ⚠️ **SUPERSEDED** — This is the original scaffolding summary and contains
+> outdated claims (e.g., Vercel deployment, "everything complete"). See
+> [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) for the current,
+> authoritative project status.
+
 **Date:** June 23, 2026
-**Status:** ✅ Phase 1 Foundation Complete
-**Ready:** Development & Phase 2 Polish
+**Status:** Historical build summary (see docs/CURRENT_STATE.md)
 
 ---
 
@@ -109,9 +113,9 @@ src/
 ### 📋 Configuration
 
 **Environment Variables:**
-- `.env.example` with all required variables
-- Email addresses configured
-- Feature flags for Supabase, Analytics, Resend
+- `.env.example` with configuration placeholders (no secrets)
+- No email addresses configured yet (final domain pending)
+- Feature flags for Supabase and Analytics only — no frontend Resend key
 - `.env.local` in `.gitignore` (not committed)
 
 **Build Config:**
@@ -227,7 +231,7 @@ All infrastructure ready - just needs backend security layer.
 - Accessibility audit
 - Mobile testing
 - Security testing
-- Vercel deployment
+- ~~Vercel deployment~~ → Cloudflare Pages (see docs/CURRENT_STATE.md)
 - Domain + DNS setup
 
 ## 🎯 Next Steps

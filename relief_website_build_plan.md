@@ -1,5 +1,10 @@
 # Relief Website Build Plan
 
+> ⚠️ **SUPERSEDED** — Historical requirements/planning document from before
+> the product reached its current state. Parts are outdated (e.g., Vercel
+> hosting). See [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) for current
+> architecture and status.
+
 ## Project Summary
 
 Build a simple, polished Vite web app for the Relief mobile app.
@@ -72,7 +77,7 @@ Use large, readable text and excellent contrast.
 - React
 - TypeScript
 - Tailwind CSS
-- Vercel hosting
+- ~~Vercel hosting~~ → Cloudflare Pages (see docs/CURRENT_STATE.md)
 - Resend for transactional email
 - Supabase optional for storing form submissions
 - Markdown or MDX for blog posts
@@ -349,10 +354,8 @@ Use Resend for sending transactional emails.
 Recommended email routing:
 
 ```txt
-info@relief-domain.co.uk       General enquiries
-support@relief-domain.co.uk    Support and bug reports
-privacy@relief-domain.co.uk    GDPR/privacy requests
-hello@relief-domain.co.uk      Friendly public contact
+# No final domain/email setup exists yet.
+# Conceptually: hello@, support@, privacy@, data@ (to be confirmed)
 ```
 
 Each form should:

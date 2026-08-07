@@ -1,5 +1,9 @@
 # 🎯 Relief Website - Setup & Verification Checklist
 
+> ⚠️ **SUPERSEDED** — Historical scaffolding checklist. See
+> [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) for the current,
+> authoritative project status and remaining launch requirements.
+
 ## ✅ Pre-Launch Verification
 
 Run through this checklist to verify everything is set up correctly before moving to Phase 2.
@@ -144,9 +148,9 @@ After verification passes, follow these steps:
 ### Phase 3 - Backend & Security
 
 **Backend Setup:**
-- [ ] Create Express.js/Node backend
+- [ ] Create Cloudflare Worker / Pages Function for form endpoints (not Express)
 - [ ] Set up database (Supabase recommended)
-- [ ] Create email service (Resend)
+- [ ] Create email service (Resend, server-side only)
 - [ ] Implement API endpoints:
   - [ ] POST `/api/email/contact`
   - [ ] POST `/api/email/facility`
@@ -209,7 +213,7 @@ After verification passes, follow these steps:
 - [ ] Load testing
 
 **Deployment:**
-- [ ] Set up Vercel project
+- [ ] Set up Cloudflare Pages project
 - [ ] Add environment variables to Vercel
 - [ ] Configure custom domain
 - [ ] Set up SSL certificate
@@ -373,5 +377,5 @@ Once all checks pass, you're ready for:
 
 Questions? Review the docs or reach out to the team.
 
-📧 Contact: info@relief-domain.co.uk
+📧 Contact: (details to be published once the final domain exists)
 
