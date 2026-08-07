@@ -21,6 +21,18 @@ const AddFacility: React.FC = () => {
 
       <section className="py-16 md:py-24 bg-white">
         <div className="section-container max-w-2xl">
+          <div className="mb-8 p-4 md:p-6 bg-primary-dark/5 border-l-4 border-primary rounded">
+            <p className="font-semibold text-text-primary mb-2">
+              How facility suggestions work
+            </p>
+            <ul className="space-y-2 text-sm text-text-muted">
+              <li>• Suggestions will be moderated and reviewed before they become live data.</li>
+              <li>• Submissions will not appear in the app immediately.</li>
+              <li>• No account is needed to suggest a facility.</li>
+              <li>• Please only share objective facility information — don't include sensitive or unnecessary personal details.</li>
+            </ul>
+          </div>
+
           <div className="card p-6 md:p-8">
             <form className="space-y-6">
               {/* Facility Name */}

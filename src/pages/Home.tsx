@@ -110,7 +110,7 @@ const Home: React.FC = () => {
                       <Heart className="w-5 h-5 fill-current" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-text-primary">{item.title}</h4>
+                      <h3 className="font-bold text-text-primary">{item.title}</h3>
                       <p className="text-text-muted">{item.desc}</p>
                     </div>
                   </div>
