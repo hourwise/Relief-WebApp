@@ -15,6 +15,7 @@ const Footer: React.FC = () => {
       links: [
         { label: 'About Us', path: ROUTES.about },
         { label: 'Blog', path: ROUTES.blog },
+        { label: 'Data & Sources', path: ROUTES.data },
         { label: 'Press Kit', path: ROUTES.press },
         { label: 'Contact', path: ROUTES.contact },
       ],

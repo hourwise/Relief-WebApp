@@ -13,6 +13,7 @@
     "gdpr": "GDPR",
     "contact": "Contact",
     "support": "Support",
+    "data": "Data & Sources",
     "blog": "Blog",
     "press": "Press",
     "social": "Social"
@@ -122,6 +123,26 @@
     "request_data_correction": "Request correction of my data",
     "request_withdraw_consent": "Withdraw my consent",
     "contact_privacy_team": "Our privacy team will respond within 30 days."
+  },
+  "data": {
+    "page_title": "Data & Sources",
+    "page_description": "Where Relief's facility information comes from, how it's kept accurate, and how to contribute.",
+    "heading": "Data & Sources",
+    "how_heading": "How Relief's data works",
+    "how_intro": "Relief combines facility information from external datasets and, in future, community contributions. The database records the source of each entry so we can keep track of where information came from.",
+    "how_provenance": "Provenance is recorded: each facility record carries information about its source.",
+    "how_stale": "Data can become stale or incorrect. Facilities close, move, or change. Please report corrections so we can keep things up to date.",
+    "how_authoritative": "When enriching records, Relief aims to prefer authoritative and current evidence over older or unverified information.",
+    "how_reconcile": "When the same facility appears in multiple sources, we reconcile the records into one entry rather than showing duplicates.",
+    "sources_heading": "Current data sources",
+    "toilet_map_uk": "The current Relief database uses the Toilet Map UK dataset as its baseline source of facility information.",
+    "future_sources": "We are researching additional authoritative sources, including transport operators, councils, and specialist accessibility organisations. These are not yet part of Relief's live dataset and are described as future enrichment work.",
+    "contributions_heading": "Community contributions",
+    "contributions_text": "Facility contributions and corrections from the community are planned for the future. Submissions will be moderated and reviewed before they become live data.",
+    "report_corrections": "In the meantime, if you spot incorrect information, you can report it through our Contact page once contact infrastructure is available.",
+    "cta_heading": "Provide or correct facility data",
+    "cta_text": "Are you an organisation with facility data you'd like to share, or corrections to suggest? We'd love to hear from you. Select the 'Data Provider' or 'Facility Data Correction' category on our Contact page.",
+    "cta_button": "Contact us"
   },
   "support": {
     "page_title": "Support",

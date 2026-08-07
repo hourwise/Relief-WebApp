@@ -28,6 +28,7 @@ const Header: React.FC = () => {
   const navLinks = [
     { label: t('nav.home'), path: ROUTES.home },
     { label: t('nav.about'), path: ROUTES.about },
+    { label: t('nav.data'), path: ROUTES.data },
     { label: t('nav.blog'), path: ROUTES.blog },
     { label: t('nav.contact'), path: ROUTES.contact },
   ]
