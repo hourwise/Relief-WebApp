@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #0F766E;
+    --color-secondary: #14B8A6;
+    --color-background: #F8FAFC;
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-error: #EF4444;
+    --color-text: #0F172A;
+    --color-muted: #64748B;
+    --color-white: #FFFFFF;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-text-primary antialiased;
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white rounded-button font-semibold hover:bg-primary/90 transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-secondary text-white rounded-button font-semibold hover:bg-secondary/90 transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-primary text-primary rounded-button font-semibold hover:bg-primary/5 transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-card shadow-sm border border-white/20 hover:shadow-lg transition-all duration-500;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Ghibli-inspired watercolor texture overlay */
+  .watercolor-texture {
+    position: relative;
+  }
+
+  .watercolor-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3%3E");
+    opacity: 0.05;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+
+  /* Soft map lines decoration */
+  .map-lines {
+    background-image: radial-gradient(circle at 2px 2px, rgba(15, 118, 110, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+}
+
+/* Custom Utilities for the "Glow" effect */
+.glow-pin {
+  @apply relative;
+}
+
+.glow-pin::after {
+  content: '';
+  @apply absolute inset-0 rounded-full bg-secondary blur-md animate-glow;
+  z-index: -1;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+}
