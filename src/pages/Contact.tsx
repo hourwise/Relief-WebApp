@@ -25,33 +25,33 @@ const Contact: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
-              <div>
+              <div className="card p-6">
                 <h3 className="text-lg font-semibold text-text-primary mb-2 flex items-center gap-2">
                   <Mail className="w-5 h-5 text-primary-dark" />
                   Email
                 </h3>
                 <p className="text-text-muted">
-                  info@relief-domain.co.uk
+                  {t('contact.coming_soon')}
                 </p>
               </div>
 
-              <div>
+              <div className="card p-6">
                 <h3 className="text-lg font-semibold text-text-primary mb-2 flex items-center gap-2">
                   <Phone className="w-5 h-5 text-primary-dark" />
                   Support
                 </h3>
                 <p className="text-text-muted">
-                  support@relief-domain.co.uk
+                  {t('contact.coming_soon')}
                 </p>
               </div>
 
-              <div>
+              <div className="card p-6">
                 <h3 className="text-lg font-semibold text-text-primary mb-2 flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-primary-dark" />
                   Address
                 </h3>
                 <p className="text-text-muted">
-                  [Company Address]
+                  [Company address to be confirmed]
                 </p>
               </div>
             </div>
@@ -68,12 +68,14 @@ const Contact: React.FC = () => {
                     {t('contact.select_category')} *
                   </label>
                   <select className="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary-light" disabled>
-                    <option value="">{t('contact.general')}</option>
+                    <option value="">{t('contact.select_category')}</option>
+                    <option value="general">{t('contact.general')}</option>
                     <option value="support">{t('contact.support')}</option>
-                    <option value="press">{t('contact.press')}</option>
+                    <option value="data-correction">{t('contact.data_correction')}</option>
+                    <option value="data-provider">{t('contact.data_provider')}</option>
                     <option value="partnership">{t('contact.partnership')}</option>
+                    <option value="press">{t('contact.press')}</option>
                     <option value="privacy">{t('contact.privacy_request')}</option>
-                    <option value="data">{t('contact.data_correction')}</option>
                   </select>
                 </div>
 
@@ -132,7 +134,7 @@ const Contact: React.FC = () => {
                   {t('buttons.submit')}
                 </button>
                 <p className="text-xs text-text-muted text-center">
-                  {t('contact.thank_you')}
+                  {t('contact.form_coming_soon')}
                 </p>
               </form>
             </div>

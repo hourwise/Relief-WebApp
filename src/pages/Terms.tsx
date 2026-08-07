@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import Hero from '@/components/Hero'
 import { BRAND } from '@/lib/config'
+import { AlertCircle } from 'lucide-react'
 
 /**
  * Terms & Conditions page
@@ -21,8 +22,20 @@ const Terms: React.FC = () => {
 
       <section className="py-16 md:py-24 bg-white">
         <div className="section-container max-w-3xl">
+          <div className="mb-8 p-4 md:p-6 bg-warning/10 border-l-4 border-warning rounded flex gap-4">
+            <AlertCircle className="w-6 h-6 text-warning flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="font-semibold text-text-primary">
+                These terms require final legal review before launch.
+              </p>
+              <p className="text-sm text-text-muted mt-2">
+                This page is a working draft and must be reviewed by legal counsel before it is presented as final.
+              </p>
+            </div>
+          </div>
+
           <p className="text-sm text-text-muted mb-8">
-            Last updated: June 2024
+            Last updated: [date to be set at launch]
           </p>
 
           <div className="space-y-12">
@@ -146,7 +159,7 @@ const Terms: React.FC = () => {
                 Contact Us
               </h2>
               <p className="text-text-muted">
-                If you have questions about these terms, please contact us at info@relief-domain.co.uk
+                If you have questions about these terms, contact details will be published here before launch.
               </p>
             </section>
           </div>

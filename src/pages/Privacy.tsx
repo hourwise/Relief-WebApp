@@ -49,10 +49,10 @@ const Privacy: React.FC = () => {
                 {t('privacy.data_controller')}
               </h2>
               <p className="text-text-muted mb-3">
-                Relief is operated by [Company Name].
+                Relief is operated by [Company name to be confirmed before launch].
               </p>
               <p className="text-text-muted mb-3">
-                For privacy matters, contact: {t('privacy.contact_privacy')}
+                Contact details for privacy matters will be published here before launch.
               </p>
             </section>
 
@@ -162,7 +162,9 @@ const Privacy: React.FC = () => {
                 Contact Us
               </h2>
               <p className="text-text-muted">
-                For privacy questions or to exercise your rights, email us at privacy@relief-domain.co.uk
+                Contact details for privacy questions and data requests will be published here before launch.
+                In the meantime, you can read about your rights on our{" "}
+                <a href="/gdpr" className="text-primary-dark hover:underline">GDPR page</a>.
               </p>
             </section>
           </div>

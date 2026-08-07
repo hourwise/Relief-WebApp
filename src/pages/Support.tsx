@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Hero from '@/components/Hero'
-import { BRAND } from '@/lib/config'
+import { BRAND, ROUTES } from '@/lib/config'
 import { ChevronDown } from 'lucide-react'
 
 /**
@@ -34,12 +35,12 @@ const Support: React.FC = () => {
     {
       category: 'Account',
       question: t('support.restore_purchases'),
-      answer: 'If you need to restore previous purchases or access, please contact our support team at support@relief-domain.co.uk.',
+      answer: 'If you need to restore previous purchases or access, please contact our support team through our Contact page once it is available.',
     },
     {
       category: 'Accessibility',
       question: t('support.accessibility_support'),
-      answer: 'Relief is built with accessibility first. If you experience any difficulties using the app or website, please let us know at support@relief-domain.co.uk.',
+      answer: 'Relief is built with accessibility first. If you experience any difficulties using the app or website, please let us know through our Contact page.',
     },
   ]
 
@@ -101,12 +102,12 @@ const Support: React.FC = () => {
           <p className="text-lg text-white/90 mb-8">
             Our support team is here to help. Reach out and we'll get back to you as soon as possible.
           </p>
-          <a
-            href="mailto:support@relief-domain.co.uk"
+          <Link
+            to={ROUTES.contact}
             className="btn-secondary inline-block"
           >
             {t('support.contact_support')}
-          </a>
+          </Link>
         </div>
       </section>
     </div>

@@ -1,9 +1,9 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { MapPin, Shield, Baby, Star, Users, Clock, Heart, Download, ArrowRight } from 'lucide-react'
+import { MapPin, Map, Shield, Clock, Navigation, Heart, Download, ArrowRight } from 'lucide-react'
 import Hero from '@/components/Hero'
 import FeatureCard from '@/components/FeatureCard'
-import { BRAND } from '@/lib/config'
+import { BRAND, ROUTES } from '@/lib/config'
 
 /**
  * Home page - landing page for Relief
@@ -20,32 +20,32 @@ const Home: React.FC = () => {
     {
       icon: MapPin,
       title: t('home.need_now'),
-      description: 'Quickly find facilities when you need them most with our intuitive map interface.',
+      description: 'Find facilities quickly when you need them most, with a one-tap shortcut to nearby options.',
+    },
+    {
+      icon: Map,
+      title: t('home.find_map_list'),
+      description: 'Browse facilities on a map or a list, and centre the view on your current location.',
     },
     {
       icon: Shield,
       title: t('home.accessibility_filters'),
-      description: 'Filter by step-free access, grab rails, and other essential accessibility features.',
-    },
-    {
-      icon: Baby,
-      title: t('home.baby_changing'),
-      description: 'Detailed information on baby changing facilities for families on the go.',
-    },
-    {
-      icon: Star,
-      title: t('home.privacy_ratings'),
-      description: 'Community-led ratings for cleanliness, privacy, and overall experience.',
-    },
-    {
-      icon: Users,
-      title: t('home.community_updates'),
-      description: 'Join thousands of users sharing real-time status updates on facilities.',
+      description: 'Filter by accessible facilities, RADAR key, baby changing, gender-neutral, family friendly, and staff nearby.',
     },
     {
       icon: Clock,
       title: t('home.open_now'),
-      description: 'Never get caught out again. See verified opening times and real-time availability.',
+      description: 'Filter by cost (free or paid), open now, or open 24 hours, based on current facility data.',
+    },
+    {
+      icon: Navigation,
+      title: t('home.directions'),
+      description: 'View facility details and get directions straight to the door.',
+    },
+    {
+      icon: Heart,
+      title: t('home.favourites_reports'),
+      description: 'Signed-in users can save favourite facilities and report corrections to help keep data accurate.',
     },
   ]
 
@@ -57,11 +57,12 @@ const Home: React.FC = () => {
         subtitle={BRAND.strapline}
         description={t('home.hero_description')}
         cta={{
-          label: t('buttons.join_waitlist'),
-          href: '#waitlist',
+          label: t('buttons.learn_more'),
+          href: ROUTES.about,
           variant: 'primary',
         }}
         image="/Assets/Screen Background.jpeg"
+        imageNote={t('home.hero_image_note')}
         transparent
       />
 
@@ -129,8 +130,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section - The Waitlist */}
-      <section id="waitlist" className="py-24 md:py-32">
+      {/* CTA Section - App availability status */}
+      <section id="download" className="py-24 md:py-32">
         <div className="section-container">
           <div className="card bg-primary p-8 md:p-20 text-white text-center relative overflow-hidden">
             {/* Background design elements */}
@@ -142,18 +143,24 @@ const Home: React.FC = () => {
                 {t('home.cta_section')}
               </h2>
               <p className="text-xl text-white/80 mb-12">
-                Join our exclusive waitlist to be among the first to experience the future of personal comfort navigation.
+                {t('home.cta_description')}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button className="btn-secondary w-full sm:w-auto px-10 py-4 text-lg flex items-center justify-center gap-2">
+                <span
+                  className="btn-secondary w-full sm:w-auto px-10 py-4 text-lg flex items-center justify-center gap-2 opacity-90 cursor-default"
+                  aria-disabled="true"
+                >
                   <Download className="w-5 h-5" />
-                  {t('home.download_ios')}
-                </button>
-                <button className="btn-outline border-white text-white hover:bg-white/10 w-full sm:w-auto px-10 py-4 text-lg flex items-center justify-center gap-2">
+                  {t('home.android_coming_soon')}
+                </span>
+                <span
+                  className="btn-outline border-white text-white w-full sm:w-auto px-10 py-4 text-lg flex items-center justify-center gap-2 opacity-90 cursor-default"
+                  aria-disabled="true"
+                >
                   <ArrowRight className="w-5 h-5" />
-                  {t('home.download_android')}
-                </button>
+                  {t('home.ios_coming_later')}
+                </span>
               </div>
             </div>
           </div>
@@ -163,38 +170,17 @@ const Home: React.FC = () => {
       {/* Blog & Community */}
       <section className="py-24 md:py-32">
         <div className="section-container">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h2 className="text-3xl font-bold text-text-primary mb-4">{t('home.blog_heading')}</h2>
-              <p className="text-text-muted">Stories, updates, and accessibility news from our community.</p>
-            </div>
-            <button className="hidden md:flex items-center gap-2 text-primary font-bold hover:underline">
-              View All <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="card overflow-hidden flex flex-col group">
-                <div className="h-48 bg-teal-50 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="bg-white/90 backdrop-blur px-4 py-2 rounded-full text-primary font-bold">Read Article</span>
-                  </div>
-                </div>
-                <div className="p-6 flex-grow">
-                  <div className="flex gap-2 mb-3">
-                    <span className="text-xs font-bold uppercase tracking-wider text-secondary">Accessibility</span>
-                    <span className="text-xs text-text-muted">• 5 min read</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-text-primary mb-3 group-hover:text-primary transition-colors">
-                    Improving Urban Accessibility in 2026
-                  </h3>
-                  <p className="text-text-muted text-sm line-clamp-2">
-                    How Relief is working with local councils to map and improve facilities across the country...
-                  </p>
-                </div>
-              </div>
-            ))}
+          <h2 className="text-3xl font-bold text-text-primary mb-4">{t('home.blog_heading')}</h2>
+          <p className="text-text-muted mb-8">
+            {t('home.blog_description')}
+          </p>
+          <div className="card p-10 md:p-14 text-center">
+            <h3 className="text-xl font-semibold text-text-primary mb-3">
+              {t('home.blog_coming_soon')}
+            </h3>
+            <p className="text-text-muted max-w-2xl mx-auto leading-relaxed">
+              {t('home.blog_coming_soon_desc')}
+            </p>
           </div>
         </div>
       </section>

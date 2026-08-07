@@ -14,7 +14,8 @@
     "contact": "Contact",
     "support": "Support",
     "blog": "Blog",
-    "press": "Press"
+    "press": "Press",
+    "social": "Social"
   },
   "buttons": {
     "coming_soon": "Coming Soon",
@@ -33,19 +34,22 @@
   "home": {
     "hero_title": "Find Comfort, Feel Relief.",
     "hero_description": "Relief helps you discover clean, private and accessible facilities nearby, with filters designed around real people and real needs.",
+    "hero_image_note": "Illustrative image only — the app interface is still in development.",
     "features_heading": "Key Features",
     "need_now": "Need One Now",
+    "find_map_list": "Find on Map or List",
     "accessibility_filters": "Accessibility Filters",
-    "baby_changing": "Baby Changing",
-    "privacy_ratings": "Privacy Ratings",
-    "community_updates": "Community Updates",
     "open_now": "Open Now",
     "directions": "Directions",
-    "saved_favourites": "Saved Favourites",
+    "favourites_reports": "Favourites & Reports",
     "blog_heading": "Latest from our Blog",
-    "cta_section": "Ready to find relief?",
-    "download_ios": "Download on iOS",
-    "download_android": "Download on Android"
+    "blog_description": "Development updates and stories from the Relief team.",
+    "blog_coming_soon": "The blog is coming soon",
+    "blog_coming_soon_desc": "We'll share why Relief is being built, how we handle facility data, and progress updates here as the project develops.",
+    "cta_section": "Relief is on its way",
+    "cta_description": "Relief is being built and tested now. An Android preview build is in preparation, and an iOS version is planned to follow. We'll announce release details here and on the blog.",
+    "android_coming_soon": "Android Preview — Coming Soon",
+    "ios_coming_later": "iOS — Coming Later"
   },
   "about": {
     "page_title": "About Relief",
@@ -74,12 +78,14 @@
     "partnership": "Partnership",
     "privacy_request": "Privacy/GDPR",
     "data_correction": "Facility Data Correction",
+    "data_provider": "Data Provider",
     "name": "Your Name",
     "email": "Your Email",
     "message": "Message",
     "sent": "Message sent successfully!",
     "error": "Failed to send message. Please try again.",
-    "thank_you": "Thank you for contacting us. We'll get back to you soon."
+    "coming_soon": "Contact addresses will be published once our secure contact infrastructure is ready.",
+    "form_coming_soon": "Contact form coming soon — submissions are disabled while we build secure form infrastructure."
   },
   "privacy": {
     "page_title": "Privacy Policy",

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ROUTES, BRAND } from '@/lib/config'
-import { Heart, Instagram, Twitter, Facebook, Mail } from 'lucide-react'
+import { Heart } from 'lucide-react'
 
 /**
  * Footer component with Ghibli-inspired warmth and organized layout
@@ -50,15 +50,11 @@ const Footer: React.FC = () => {
               </div>
             </Link>
             <p className="text-text-muted text-lg leading-relaxed max-w-sm mb-8">
-              Finding comfort, feeling relief. The world's most compassionate accessibility companion.
+              Finding comfort, feeling relief — a kind, accessible companion for finding essential facilities.
             </p>
-            <div className="flex gap-4">
-              {[Instagram, Twitter, Facebook, Mail].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-primary/5 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
+            <p className="text-sm text-text-muted">
+              Social accounts are coming soon. We'll share links here once they're live.
+            </p>
           </div>
 
           {/* Links Sections */}

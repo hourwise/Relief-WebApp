@@ -45,6 +45,12 @@ const Gdpr: React.FC = () => {
 
       <section className="py-16 md:py-24 bg-white">
         <div className="section-container max-w-3xl">
+          <div className="mb-8 p-4 md:p-6 bg-warning/10 border-l-4 border-warning rounded">
+            <p className="font-semibold text-text-primary">
+              This page is a working draft and requires final legal review before launch.
+            </p>
+          </div>
+
           {/* Your Rights */}
           <div className="mb-16">
             <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-8">
@@ -74,8 +80,8 @@ const Gdpr: React.FC = () => {
               How to Make a Data Request
             </h2>
             <p className="text-text-muted mb-4">
-              To exercise any of your rights, please email us at{' '}
-              <strong>privacy@relief-domain.co.uk</strong> with:
+              To exercise any of your rights, please contact us once our secure contact form is available
+              (details will be published here before launch). When submitting a request, please include:
             </p>
             <ol className="space-y-2 text-text-muted ml-4 list-decimal">
               <li>Your full name</li>

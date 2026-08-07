@@ -32,7 +32,8 @@ const Press: React.FC = () => {
               Built with dignity, privacy, and accessibility at its core.
             </p>
             <p className="text-text-muted leading-relaxed">
-              Available for iOS and Android, Relief is transforming how people discover essential facilities with confidence.
+              An Android preview build is in development, with an iOS version planned to follow.
+              Download links will be published here when they become available.
             </p>
           </div>
 
@@ -43,7 +44,8 @@ const Press: React.FC = () => {
                 Founder Story
               </h3>
               <p className="text-text-muted text-sm">
-                Relief was founded by [Name] and inspired by lived experience and personal journey with accessibility challenges.
+                Relief was inspired by lived experience and a personal journey with accessibility challenges.
+                Full founder details will be published in due course.
               </p>
             </div>
             <div className="card p-6">
@@ -65,32 +67,41 @@ const Press: React.FC = () => {
               <div className="card p-6 flex items-center justify-between hover:shadow-md transition">
                 <div>
                   <h3 className="font-semibold text-text-primary">Logo Files</h3>
-                  <p className="text-sm text-text-muted">PNG, SVG formats</p>
+                  <p className="text-sm text-text-muted">PNG, SVG formats — coming soon</p>
                 </div>
-                <button className="flex items-center gap-2 text-primary-dark hover:text-primary-light">
+                <span
+                  className="flex items-center gap-2 text-primary-dark/60 cursor-default"
+                  aria-disabled="true"
+                >
                   <Download className="w-5 h-5" />
-                  <span>Download</span>
-                </button>
+                  <span>Coming Soon</span>
+                </span>
               </div>
               <div className="card p-6 flex items-center justify-between hover:shadow-md transition">
                 <div>
                   <h3 className="font-semibold text-text-primary">App Screenshots</h3>
-                  <p className="text-sm text-text-muted">High-res app mockups and screenshots</p>
+                  <p className="text-sm text-text-muted">Official screenshots — coming soon</p>
                 </div>
-                <button className="flex items-center gap-2 text-primary-dark hover:text-primary-light">
+                <span
+                  className="flex items-center gap-2 text-primary-dark/60 cursor-default"
+                  aria-disabled="true"
+                >
                   <Download className="w-5 h-5" />
-                  <span>Download</span>
-                </button>
+                  <span>Coming Soon</span>
+                </span>
               </div>
               <div className="card p-6 flex items-center justify-between hover:shadow-md transition">
                 <div>
                   <h3 className="font-semibold text-text-primary">Brand Guidelines</h3>
-                  <p className="text-sm text-text-muted">Colour palette, typography, usage rules</p>
+                  <p className="text-sm text-text-muted">Colour palette, typography, usage rules — coming soon</p>
                 </div>
-                <button className="flex items-center gap-2 text-primary-dark hover:text-primary-light">
+                <span
+                  className="flex items-center gap-2 text-primary-dark/60 cursor-default"
+                  aria-disabled="true"
+                >
                   <Download className="w-5 h-5" />
-                  <span>Download</span>
-                </button>
+                  <span>Coming Soon</span>
+                </span>
               </div>
             </div>
           </section>
@@ -125,12 +136,9 @@ const Press: React.FC = () => {
             <p className="text-text-muted mb-4">
               For press queries, interviews, or media requests:
             </p>
-            <a
-              href="mailto:press@relief-domain.co.uk"
-              className="text-primary-dark font-semibold hover:text-primary-light"
-            >
-              press@relief-domain.co.uk
-            </a>
+            <p className="text-text-muted">
+              Press contact details will be published once our contact infrastructure is ready.
+            </p>
           </div>
         </div>
       </section>

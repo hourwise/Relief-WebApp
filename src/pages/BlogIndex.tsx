@@ -53,28 +53,15 @@ const BlogIndex: React.FC = () => {
             </div>
           </div>
 
-          {/* Blog Posts Placeholder */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="card overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-primary-light to-secondary opacity-30"></div>
-                <div className="p-6">
-                  <p className="text-xs font-semibold text-primary-dark uppercase mb-2">
-                    Category
-                  </p>
-                  <h3 className="text-lg font-semibold text-text-primary mb-2">
-                    Blog Post Title Here
-                  </h3>
-                  <p className="text-text-muted text-sm mb-4">
-                    A brief excerpt of the blog post will appear here...
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-text-muted">
-                    <span>By Author Name</span>
-                    <span>Jun 23, 2024</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Blog Posts - coming soon */}
+          <div className="card p-10 md:p-16 text-center">
+            <h3 className="text-xl font-semibold text-text-primary mb-3">
+              No posts yet
+            </h3>
+            <p className="text-text-muted max-w-2xl mx-auto leading-relaxed">
+              The blog is coming soon. We'll share why Relief is being built, how we handle facility data,
+              and development updates here as the project progresses.
+            </p>
           </div>
         </div>
       </section>

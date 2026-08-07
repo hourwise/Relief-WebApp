@@ -10,6 +10,8 @@ interface HeroProps {
     variant?: 'primary' | 'secondary' | 'outline'
   }
   image?: string
+  imageAlt?: string
+  imageNote?: string
   children?: React.ReactNode
   transparent?: boolean
 }
@@ -23,6 +25,8 @@ const Hero: React.FC<HeroProps> = ({
   description,
   cta,
   image,
+  imageAlt,
+  imageNote,
   children,
   transparent = false,
 }) => {
@@ -71,29 +75,24 @@ const Hero: React.FC<HeroProps> = ({
             </div>
           </div>
 
-          {(image || true) && (
-            <div className="flex-1 relative animate-float">
+          {image && (
+            <div className="flex-1 relative">
               {/* Decorative Glow */}
               <div className="absolute inset-0 bg-secondary/20 blur-[60px] rounded-full scale-75 -z-10" />
 
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white">
                 <img
-                  src={image || "/Assets/Screen Background.jpeg"}
-                  alt="Relief App Preview"
+                  src={image}
+                  alt={imageAlt || 'Illustrative preview image'}
                   className="w-full h-auto object-cover"
                 />
               </div>
 
-              {/* Floating elements to evoke Ghibli style */}
-              <div className="absolute -top-6 -right-6 w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-bounce duration-[3000ms]">
-                <div className="w-8 h-8 bg-secondary rounded-full glow-pin" />
-              </div>
-              <div className="absolute -bottom-10 -left-10 p-6 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl hidden md:block">
-                <p className="text-sm font-bold text-primary">Find Comfort Near You</p>
-                <div className="flex gap-1 mt-2">
-                   {[1,2,3,4,5].map(i => <div key={i} className="w-2 h-2 rounded-full bg-secondary" />)}
-                </div>
-              </div>
+              {imageNote && (
+                <p className="text-xs text-text-muted mt-4 text-center italic max-w-md mx-auto">
+                  {imageNote}
+                </p>
+              )}
             </div>
           )}
         </div>
