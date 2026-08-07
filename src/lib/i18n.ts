@@ -21,7 +21,7 @@ i18n
 // Expose instance for quick runtime debugging in dev only
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;(window as any).__i18n = i18n
+  (window as any).__i18n = i18n
 }
 
 export default i18n
