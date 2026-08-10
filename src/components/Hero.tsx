@@ -14,6 +14,7 @@ interface HeroProps {
   imageNote?: string
   children?: React.ReactNode
   transparent?: boolean
+  compact?: boolean
 }
 
 /**
@@ -29,6 +30,7 @@ const Hero: React.FC<HeroProps> = ({
   imageNote,
   children,
   transparent = false,
+  compact = false,
 }) => {
   const getButtonClass = (variant: 'primary' | 'secondary' | 'outline' = 'primary') => {
     switch (variant) {
@@ -42,7 +44,7 @@ const Hero: React.FC<HeroProps> = ({
   }
 
   return (
-    <div className={`relative overflow-hidden ${transparent ? 'py-16 md:py-28' : 'bg-gradient-to-b from-teal-50/50 to-white py-16 md:py-28'}`}>
+    <div className={`relative overflow-hidden ${transparent ? (compact ? 'py-12 md:py-20' : 'py-16 md:py-28') : 'bg-gradient-to-b from-teal-50/50 to-white py-16 md:py-28'}`}>
       <div className="section-container relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           <div className="flex-1 text-center lg:text-left">

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 import WatercolorBackground from './WatercolorBackground'
+import RouteMetadata from './RouteMetadata'
 
 /**
  * Main Layout component that wraps all pages
@@ -11,6 +12,7 @@ import WatercolorBackground from './WatercolorBackground'
 const Layout: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
+      <RouteMetadata />
       <Header />
       <main className="flex-grow">
         <WatercolorBackground>

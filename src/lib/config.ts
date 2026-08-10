@@ -8,7 +8,7 @@ export const BRAND = {
   description: import.meta.env.VITE_SITE_DESCRIPTION || 'Find clean, private and accessible facilities nearby',
   // No final domain exists yet. Set VITE_SITE_URL when one is live.
   // Do not invent a production-looking URL as a default.
-  siteUrl: import.meta.env.VITE_SITE_URL || '',
+  siteUrl: import.meta.env.VITE_SITE_URL || 'https://findrelief.co.uk',
 } as const
 
 export const COLORS = {
@@ -98,7 +98,7 @@ export const SEO_DEFAULTS = {
   siteName: BRAND.name,
   description: BRAND.description,
   // No default OG image yet — pages must supply one before launch.
-  ogImage: '',
+  ogImage: '/media/relief-logo.jpeg',
   // No Twitter/X account exists yet — handle is published when one is live.
   twitterHandle: '',
 } as const

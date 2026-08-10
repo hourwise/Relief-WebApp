@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
             <Link to={ROUTES.home} className="flex items-center mb-8 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-secondary/10 blur-xl rounded-2xl scale-110 group-hover:bg-secondary/20 transition-all duration-500" />
-                <img src="/Assets/Logo2.jpeg" alt={BRAND.name} className="relative w-32 h-auto rounded-xl shadow-sm group-hover:shadow-glow transition-all border border-white/30" />
+                <img src="/media/relief-logo.jpeg" alt={BRAND.name} className="relative w-32 h-auto rounded-xl shadow-sm group-hover:shadow-glow transition-all border border-white/30" />
               </div>
             </Link>
             <p className="text-text-muted text-lg leading-relaxed max-w-sm mb-8">

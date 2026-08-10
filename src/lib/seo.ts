@@ -3,7 +3,7 @@
  */
 
 import { SEOMetadata } from './types'
-import { BRAND, SEO_DEFAULTS } from './config'
+import { BRAND, SEO_DEFAULTS, ROUTES } from './config'
 
 /**
  * Generate SEO metadata for pages
@@ -97,6 +97,10 @@ export const PAGE_META = {
     title: 'Support',
     description: 'Find answers and get help with the Relief app.',
   }),
+  data: () => generateSEOMetadata({
+    title: 'Data & Sources',
+    description: 'Learn where Relief facility information comes from and how we track its sources.',
+  }),
   addFacility: () => generateSEOMetadata({
     title: 'Add a Facility',
     description: 'Suggest a new facility to Relief.',
@@ -114,4 +118,20 @@ export const PAGE_META = {
     description: 'Media resources, logos, and brand information for Relief.',
   }),
 } as const
+
+/** Metadata for public routes that have a real page and may be indexed. */
+export const PAGE_META_BY_ROUTE: Record<string, () => SEOMetadata> = {
+  [ROUTES.home]: PAGE_META.home,
+  [ROUTES.about]: PAGE_META.about,
+  [ROUTES.data]: PAGE_META.data,
+  [ROUTES.support]: PAGE_META.support,
+  [ROUTES.contact]: PAGE_META.contact,
+  [ROUTES.privacy]: PAGE_META.privacy,
+  [ROUTES.terms]: PAGE_META.terms,
+  [ROUTES.gdpr]: PAGE_META.gdpr,
+  [ROUTES.addFacility]: PAGE_META.addFacility,
+  [ROUTES.reportBug]: PAGE_META.reportBug,
+  [ROUTES.blog]: PAGE_META.blog,
+  [ROUTES.press]: PAGE_META.press,
+}
 

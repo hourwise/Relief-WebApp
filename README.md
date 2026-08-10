@@ -204,6 +204,17 @@ Secondary: **Plus Jakarta Sans**
 - **Outbound email:** Resend (later, server-side only)
 - **Backend:** existing Supabase where appropriate
 
+### Cloudflare Pages launch settings
+
+- Production branch: `main`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Canonical domain: `https://findrelief.co.uk`
+- `www.findrelief.co.uk` will redirect to the canonical apex domain at Cloudflare.
+- The eventual `*.pages.dev` URL should redirect to the canonical domain after the custom domain is confirmed.
+
+No Cloudflare resources, DNS records, or deployments are created by this repository pass.
+
 The project is **Cloudflare-ready, not Cloudflare-dependent**: no Cloudflare project, DNS, or domain is configured yet, and the site runs locally with normal `npm run dev` / `npm run build`.
 - Spam protection
 

@@ -13,6 +13,9 @@ pnpm-debug.log
 dist/
 build/
 
+# Local source media; the production copy lives in public/media/
+/Assets/relief video 1.mp4
+
 # IDE
 .vscode/
 .idea/

@@ -1,8 +1,8 @@
 # Relief Web — Current State (Source of Truth)
 
 > Authoritative status for the Relief public website.
-> Last updated: 2026-08-07
-> Branch: `feat/web-reconciliation` (working branch; do not merge to `main`)
+> Last updated: 2026-08-10
+> Branch: `main` (intended production source branch)
 
 Status terms used throughout this document:
 
@@ -129,22 +129,24 @@ Planned functionality may appear, but only clearly labelled **Planned** /
 ## 9. Deployment status
 
 - **Not deployed** (EXTERNAL SETUP REQUIRED).
-- Intended:
-  - GitHub as source repository
-  - Cloudflare Pages for the Vite frontend
-  - Cloudflare-managed DNS, HTTPS, CDN
-  - Cloudflare Email Routing for incoming aliases (later)
-  - Cloudflare Worker / Pages Function for secure web forms (later)
-  - Resend for transactional outbound email (later, server-side)
-  - existing Supabase backend where appropriate
+- Intended Cloudflare Pages settings after review:
+  - Production branch: `main`
+  - Build command: `npm run build`
+  - Output directory: `dist`
+  - Canonical domain: `findrelief.co.uk`
+  - `www.findrelief.co.uk` redirects to `findrelief.co.uk`
+  - `*.pages.dev` redirects to the canonical domain after the custom domain is confirmed
+- Later external setup: Cloudflare-managed DNS/HTTPS/CDN, Email Routing, secure
+  Worker / Pages Function forms, Resend (server-side), and existing Supabase where appropriate.
 - The project is **Cloudflare-ready, not Cloudflare-dependent**: no
   Cloudflare project, DNS, domain, email, Worker, or Supabase connection
   has been created. The site runs locally with `npm run dev` / `npm run build`.
 
 ## 10. Domain / email status
 
-- Final domain: **not set** (EXTERNAL SETUP REQUIRED). No invented
-  production-looking domain is used anywhere.
+- Canonical production domain: **`https://findrelief.co.uk`** (configured in the
+  frontend defaults and `.env.example`; DNS and hosting remain external setup).
+- `www.findrelief.co.uk` is not canonical and is intended to redirect at Cloudflare.
 - Contact email addresses: **not set** (PLANNED) — conceptually
   `hello@`, `support@`, `privacy@`, `data@` (to be confirmed).
 - App store links: `null` in `src/lib/config.ts` until real release URLs
@@ -189,7 +191,7 @@ Planned functionality may appear, but only clearly labelled **Planned** /
 
 1. Secure form backend (Cloudflare Worker / Pages Function) + Turnstile
 2. Legal review sign-off on Privacy / Terms / GDPR
-3. Final domain + DNS + email routing + Resend addresses
+3. DNS, email routing, confirmed owner/controller details, and Resend addresses
 4. Cloudflare Pages deployment
 5. Accessibility audit against the **WCAG AA target** (a formal "WCAG AA
    compliant" claim may only be made after a real audit)

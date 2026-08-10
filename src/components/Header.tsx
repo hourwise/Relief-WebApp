@@ -29,7 +29,6 @@ const Header: React.FC = () => {
     { label: t('nav.home'), path: ROUTES.home },
     { label: t('nav.about'), path: ROUTES.about },
     { label: t('nav.data'), path: ROUTES.data },
-    { label: t('nav.blog'), path: ROUTES.blog },
     { label: t('nav.contact'), path: ROUTES.contact },
   ]
 
@@ -50,7 +49,7 @@ const Header: React.FC = () => {
             {/* Glow background matches oblong shape */}
             <div className="absolute inset-0 bg-secondary/15 blur-xl rounded-2xl scale-110 group-hover:bg-secondary/25 transition-all duration-500" />
             <img
-              src="/Assets/Logo2.jpeg"
+              src="/media/relief-logo.jpeg"
               alt={BRAND.name}
               className="relative w-28 md:w-36 h-auto rounded-xl object-contain border-2 border-white/50 shadow-sm"
             />
@@ -80,7 +79,7 @@ const Header: React.FC = () => {
             to={ROUTES.support}
             className="btn-primary py-2.5 px-6 text-sm flex items-center gap-2 group"
           >
-            {t('buttons.contact_us')}
+            {t('nav.support')}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -122,7 +121,7 @@ const Header: React.FC = () => {
             onClick={closeMenu}
             className="btn-primary w-full text-center mt-4 py-4 rounded-2xl"
           >
-            {t('buttons.contact_us')}
+            {t('nav.support')}
           </Link>
         </nav>
       </div>
