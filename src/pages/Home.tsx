@@ -78,7 +78,7 @@ const Home: React.FC = () => {
       />
 
       {/* Features Section */}
-      <section className="py-16 md:py-20 relative overflow-hidden">
+      <section className="pt-10 pb-16 md:pt-10 md:pb-20 relative overflow-hidden">
         <div className="section-container">
           <div className="text-center mb-12 md:mb-16">
               <h2 className="text-3xl md:text-5xl font-bold text-text-primary mb-4">
