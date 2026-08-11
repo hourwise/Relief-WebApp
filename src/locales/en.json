@@ -138,8 +138,8 @@
     "toilet_map_uk": "The current Relief database uses the Toilet Map UK dataset as its baseline source of facility information.",
     "future_sources": "We are researching additional authoritative sources, including transport operators, councils, and specialist accessibility organisations. These are not yet part of Relief's live dataset and are described as future enrichment work.",
     "contributions_heading": "Community contributions",
-    "contributions_text": "Facility contributions and corrections from the community are planned for the future. Submissions will be moderated and reviewed before they become live data.",
-    "report_corrections": "In the meantime, if you spot incorrect information, email data@findrelief.co.uk. Contributions and corrections will be moderated before they become live data.",
+    "contributions_text": "On this public website, facility contributions and corrections from the community are not currently enabled. The Relief mobile app has an authenticated facility-submission flow, and its facility reports and correction requests are stored against the submitting user ID. The mobile audit does not establish the moderation or publication process for those submissions.",
+    "report_corrections": "For this website, if you spot incorrect information, email data@findrelief.co.uk. The website does not currently accept submissions through a form; mobile-app reports and correction requests are a separate authenticated flow.",
     "cta_heading": "Provide or correct facility data",
     "cta_text": "Are you an organisation with facility data you'd like to share, or corrections to suggest? Email data@findrelief.co.uk.",
     "cta_button": "Contact us"

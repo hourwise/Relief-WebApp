@@ -74,15 +74,21 @@ const Privacy: React.FC = () => {
               </p>
             </section>
 
-            <section>
-              <h2 className="text-2xl font-bold text-text-primary mb-4">The Relief mobile app</h2>
-              <p className="text-text-muted mb-4">
-                The mobile app is a separate product. Depending on how it is used, it may process information needed for app functionality, including account information, location-related facility discovery, favourites, and reports or corrections. The app may also use facility information from external datasets.
-              </p>
-              <p className="text-text-muted">
-                This website policy should not be read as saying that the website currently performs the mobile app’s processing. App-specific processing details and any relevant service providers must be documented and reviewed alongside the app before release.
-              </p>
-            </section>
+          <section>
+            <h2 className="text-2xl font-bold text-text-primary mb-4">The Relief mobile app</h2>
+            <p className="text-text-muted mb-4">
+                The mobile app is a separate product. When used, it currently processes Supabase email/password account authentication, account email or auth identity, display name and user profile data, and a locally persisted auth session. It also processes foreground fine or coarse location; location coordinates may be sent to Supabase facility queries or the nearest-facility RPC for discovery. Favourites, facility reports, and correction requests are stored against the user ID, and the app has an authenticated facility-submission flow. The app uses Google Maps on Android for map display and directions handoff.
+            </p>
+            <p className="text-text-muted mb-4">
+                The following mobile features are implemented but disabled or not currently public: push-token acquisition and notifications, alert preferences, RevenueCat subscriptions, Google OAuth, Apple login, offline facility caching, saved profiles, route planning, what3words, and AI features. Photo uploads and moderation are implemented but not verified or exposed.
+            </p>
+            <p className="text-text-muted mb-4">
+                No dedicated analytics or crash-reporting system has been verified. This website policy should not be read as saying that the website currently performs the mobile app’s processing, or that disabled or not publicly exposed mobile features are active.
+            </p>
+            <p className="text-text-muted">
+                Account-specific deletion handling remains unresolved. This policy does not promise a dedicated account-deletion page, automated deletion route, or particular deletion workflow until that contract and implementation are confirmed.
+            </p>
+          </section>
 
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">Information and purposes</h2>
@@ -106,9 +112,9 @@ const Privacy: React.FC = () => {
 
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">Retention</h2>
-              <p className="text-text-muted">
-                We keep direct email correspondence only for as long as it is reasonably needed for the enquiry or support issue, to handle a legal obligation or dispute, or to maintain a legitimate and appropriate business record. Specific retention periods and deletion processes remain subject to final policy review; no arbitrary fixed period is stated here.
-              </p>
+            <p className="text-text-muted">
+                We keep direct email correspondence only for as long as it is reasonably needed for the enquiry or support issue, to handle a legal obligation or dispute, or to maintain a legitimate and appropriate business record. Specific retention periods and deletion processes remain subject to final policy review; no arbitrary fixed period is stated here. Retention and deletion arrangements for mobile-app account data remain subject to the unresolved account-deletion contract.
+            </p>
             </section>
 
             <section>

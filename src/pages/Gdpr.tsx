@@ -62,7 +62,7 @@ const Gdpr: React.FC = () => {
           <section className="card p-6 md:p-8 mb-16">
             <h2 className="text-2xl font-bold text-text-primary mb-4">Online request form</h2>
             <p className="text-text-muted">
-              The website request form is intentionally disabled while secure server-side form infrastructure is being prepared. This does not prevent you from exercising your rights by emailing the address above.
+              The website request form is intentionally disabled while secure server-side form infrastructure is being prepared. This does not prevent you from exercising your rights by emailing the address above. Any account-specific deletion workflow for the mobile app remains unresolved; do not assume that a dedicated public account-deletion page or automated deletion route is currently available.
             </p>
           </section>
 
