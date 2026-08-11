@@ -1,8 +1,8 @@
 # Relief Web — Current State (Source of Truth)
 
 > Authoritative status for the Relief public website.
-> Last updated: 2026-08-10
-> Branch: `main` (intended production source branch)
+> Last updated: 2026-08-11
+> Branch: `main` (production source branch)
 
 Status terms used throughout this document:
 
@@ -90,17 +90,50 @@ planning, offline maps, iOS availability, or app-store availability.
 Planned functionality may appear, but only clearly labelled **Planned** /
 **Coming later** / **In development**, with no speculative launch dates.
 
-## 6. Intentionally disabled features
+## A. CURRENT PUBLIC WEBSITE — LIVE
 
-- All web forms (Contact, Add Facility, Report Bug, GDPR request,
-  newsletter) — IMPLEMENTED BUT DISABLED. No fake success states; pages
+- Relief is deployed on Cloudflare Pages from the `main` branch.
+- The canonical public domain is **`https://findrelief.co.uk`**.
+- The custom domain is active and SSL is enabled.
+- Apex DNS is proxied through Cloudflare and points to
+  `relief-webapp.pages.dev`.
+- `relief-webapp.pages.dev` remains the underlying Pages hostname. This
+  document does not claim that it redirects to the custom domain.
+- `www.findrelief.co.uk` is a proxied, redirect-only hostname. It permanently
+  redirects to the apex domain while preserving paths and query strings. This
+  has been verified with `/privacy?test=1`.
+- The current production build is a static informational SPA. Forms and user
+  submission workflows are intentionally not part of the live service.
+- Contact/legal reconciliation is committed at
+  `7006229b8b5437bc29a5e5df7f593cb33bd45fb7`.
+
+## B. CURRENTLY DISABLED / SAFE
+
+- All web forms (Contact, Add Facility, Report Bug, GDPR request, newsletter)
+  are intentionally disabled. No fake success states are presented; pages
   show an honest "coming soon" message.
-- Email sending (Resend) — PLANNED, server-side only, not connected.
+- No Contact, GDPR, Add Facility, Report Bug, or newsletter backend exists.
+- No intentionally installed analytics or tracking system is active.
+- Google Fonts remains externally loaded. Self-hosting the current open-source
+  font files remains a future privacy/performance improvement.
+- Email sending through Resend is not connected. The public email aliases
+  listed below are active for correspondence through Cloudflare Email Routing.
 
-## 7. Forms / backend status
+## C. BEFORE ENABLING FORMS OR USER SUBMISSION
 
-- No backend endpoints exist yet (PLANNED).
-- Intended architecture:
+- Build and review secure server-side form endpoints with validation,
+  sanitisation, IP-based rate limiting, CSRF protection, and anti-spam
+  controls such as Cloudflare Turnstile.
+- Define handling, retention, access controls, and deletion procedures for
+  submitted personal information.
+- Complete final legal review of Privacy, Terms, and GDPR pages, including
+  controller details and the temporary public address disclosure.
+- If Supabase or another backend is introduced, keep service keys out of
+  `VITE_*` variables and review the resulting provider and data flows.
+- Choose and configure any server-side email delivery service only after the
+  form design, privacy notice, and operational safeguards are ready.
+
+Intended future form architecture:
 
   ```
   Browser
@@ -126,62 +159,60 @@ Planned functionality may appear, but only clearly labelled **Planned** /
   aims to prefer authoritative/current evidence and reconciles facilities
   from multiple sources rather than showing duplicates.
 
-## 9. Deployment status
-
-- **Not deployed** (EXTERNAL SETUP REQUIRED).
-- Intended Cloudflare Pages settings after review:
-  - Production branch: `main`
-  - Build command: `npm run build`
-  - Output directory: `dist`
-  - Canonical domain: `findrelief.co.uk`
-  - `www.findrelief.co.uk` redirects to `findrelief.co.uk`
-  - `*.pages.dev` redirects to the canonical domain after the custom domain is confirmed
-- Later external setup: Cloudflare-managed DNS/HTTPS/CDN, Email Routing, secure
-  Worker / Pages Function forms, Resend (server-side), and existing Supabase where appropriate.
-- The project is **Cloudflare-ready, not Cloudflare-dependent**: no
-  Cloudflare project, DNS, domain, email, Worker, or Supabase connection
-  has been created. The site runs locally with `npm run dev` / `npm run build`.
-
 ## 10. Domain / email status
 
-- Canonical production domain: **`https://findrelief.co.uk`** (configured in the
-  frontend defaults and `.env.example`; DNS and hosting remain external setup).
-- `www.findrelief.co.uk` is not canonical and is intended to redirect at Cloudflare.
-- Verified public contact addresses:
+- Canonical production domain: **`https://findrelief.co.uk`**.
+- Cloudflare Pages deployment, custom-domain activation, SSL, and proxied DNS
+  are live as described in section A.
+- Verified public contact aliases:
   `hello@findrelief.co.uk`, `support@findrelief.co.uk`,
   `privacy@findrelief.co.uk`, and `data@findrelief.co.uk`.
+- Cloudflare Email Routing is active and forwards these aliases to a verified
+  private destination mailbox. The private destination address is not stored
+  in repository documentation.
 - Operator identity for legal/controller wording: **Phil Geran trading as
   PCGsoft**, a UK sole trader.
-- A current public business/correspondence address has been supplied and
-  expressly authorised by the owner for temporary use. It must remain
-  configuration-driven and must not be committed to this public repository.
-- Replace it if a separate suitable business/service address is obtained.
+- The public business address is supplied through `VITE_BUSINESS_ADDRESS`.
+  Production verification that the configured value is visibly rendering on
+  the live legal/contact pages remains outstanding. The real value must remain
+  absent from Git-tracked files and repository documentation.
 - App store links: `null` in `src/lib/config.ts` until real release URLs
-  exist. Android preview is in preparation (PLANNED); iOS is PLANNED.
+  exist. Android public release/store link is future; iOS is future.
 
 ## 11. Internal compliance note
 
 - Operator identified: **Phil Geran trading as PCGsoft**.
-- The current public business/correspondence address has been supplied and
-  expressly authorised by the owner for temporary use.
-- The address must remain configuration-driven rather than committed into the
-  public repository or `.env.example`.
-- Replace it if a separate suitable business/service address is obtained.
-- Do not invent or expose any other address.
+- The public business address must remain configuration-driven through
+  `VITE_BUSINESS_ADDRESS` rather than committed into the public repository or
+  `.env.example`.
+- Do not mark the address as production-configured until visible rendering on
+  the live legal/contact pages has been confirmed.
+- If a temporary public address is used, replace it if a separate suitable
+  business/service address is obtained. Do not invent or expose any other
+  address.
 - Future improvement: consider self-hosting the current open-source font files
   so the public website does not need to contact Google Fonts at page load.
 
+## D. FUTURE PRODUCT/CONTENT WORK
+
+- Home hero image is illustrative/placeholder and is labelled as such on the
+  page (the app UI is still in development).
+- Blog and Social pages show honest empty/"coming soon" states. Blog posts,
+  social accounts, and press content/assets remain incomplete or planned; no
+  invented articles, testimonials, metrics, or publication history.
+- Android public release and store link remain future work; iOS remains future.
+- Data-provider / partnership workflows remain future work.
+- Legal pages (Privacy / Terms / GDPR) carry a marker that final legal review
+  is required; no certifications, formal legal sign-off, or compliance claims
+  are made.
+
 ## 12. Known placeholders
 
-- Home hero image is illustrative/placeholder and is labelled as such on
-  the page (the app UI is still in development).
+- Home hero image is illustrative/placeholder and is labelled as such on the
+  page (the app UI is still in development).
 - Press kit download assets: "Coming Soon".
-- Current public business/correspondence address is deployment-configured and
-  intentionally absent from tracked source.
-- Blog and Social pages show honest empty/"coming soon" states — no
-  invented articles, testimonials, metrics, or publication history.
-- Legal pages (Privacy / Terms / GDPR) carry a marker that final legal
-  review is required before launch; no certifications or compliance claims.
+- The production business address value is intentionally absent from tracked
+  source and is pending visible production verification.
 
 ## 13. Dependency / audit findings (2026-08-07)
 
@@ -198,29 +229,23 @@ Planned functionality may appear, but only clearly labelled **Planned** /
     SSR constructor-injection advisory): fix requires v7 (major). The site
     is a static SPA without SSR; revisit before launch if warranted.
 
-## 14. Security blockers (before public launch)
+## 14. Genuine remaining review / future items
 
-1. Server-side form endpoints with validation, sanitisation, IP-based rate
-   limiting, CSRF, and anti-spam (Cloudflare Turnstile recommended).
-2. Final legal review of Privacy / Terms / GDPR.
-3. Final legal confirmation of the temporary public address disclosure and
-   controller details.
-4. Secure handling of any future Supabase integration (service keys never
-   in `VITE_*`).
-
-## 15. Outstanding launch requirements
-
-1. Secure form backend (Cloudflare Worker / Pages Function) + Turnstile
-2. Legal review sign-off on Privacy / Terms / GDPR
-3. DNS, email routing, review of the temporary public address disclosure, and
-   final owner/controller legal confirmation
-4. Cloudflare Pages deployment
-5. Accessibility audit against the **WCAG AA target** (a formal "WCAG AA
-   compliant" claim may only be made after a real audit)
-6. Real Android preview build and store link; iOS later
-7. Data-provider / partnership process (via Contact once live)
-8. First blog posts
-9. Real social accounts and press assets
+1. Final legal and compliance review of Privacy / Terms / GDPR, including
+   controller details, provider arrangements, international-transfer review,
+   and the temporary public address disclosure.
+2. Production verification that `VITE_BUSINESS_ADDRESS` visibly renders on
+   the live legal/contact pages.
+3. Accessibility review against the WCAG AA target; no WCAG AA compliance
+   claim is made here.
+4. Secure form backend, Turnstile, retention procedures, and any email-sending
+   integration before enabling user submission.
+5. Android public release/store link and later iOS release.
+6. Data-provider / partnership process, first blog posts, real social
+   accounts, and completed press assets.
+7. Deferred dependency upgrades and audit findings remain documented in
+   section 13; no major dependency upgrades were introduced for this state
+   reconciliation.
 
 ---
 
