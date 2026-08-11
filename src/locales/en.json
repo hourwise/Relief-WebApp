@@ -85,7 +85,7 @@
     "message": "Message",
     "sent": "Message sent successfully!",
     "error": "Failed to send message. Please try again.",
-    "coming_soon": "Contact addresses will be published once our secure contact infrastructure is ready.",
+    "coming_soon": "Email contact routes are available below. The website form remains disabled while secure submission infrastructure is prepared.",
     "form_coming_soon": "Contact form coming soon — submissions are disabled while we build secure form infrastructure."
   },
   "privacy": {
@@ -122,7 +122,7 @@
     "request_data_deletion": "Request deletion of my data",
     "request_data_correction": "Request correction of my data",
     "request_withdraw_consent": "Withdraw my consent",
-    "contact_privacy_team": "Our privacy team will respond within 30 days."
+    "contact_privacy_team": "Contact the privacy team at privacy@findrelief.co.uk. Requests are handled without undue delay and normally within one month, subject to lawful exceptions and extensions."
   },
   "data": {
     "page_title": "Data & Sources",
@@ -139,9 +139,9 @@
     "future_sources": "We are researching additional authoritative sources, including transport operators, councils, and specialist accessibility organisations. These are not yet part of Relief's live dataset and are described as future enrichment work.",
     "contributions_heading": "Community contributions",
     "contributions_text": "Facility contributions and corrections from the community are planned for the future. Submissions will be moderated and reviewed before they become live data.",
-    "report_corrections": "In the meantime, if you spot incorrect information, you can report it through our Contact page once contact infrastructure is available.",
+    "report_corrections": "In the meantime, if you spot incorrect information, email data@findrelief.co.uk. Contributions and corrections will be moderated before they become live data.",
     "cta_heading": "Provide or correct facility data",
-    "cta_text": "Are you an organisation with facility data you'd like to share, or corrections to suggest? We'd love to hear from you. Select the 'Data Provider' or 'Facility Data Correction' category on our Contact page.",
+    "cta_text": "Are you an organisation with facility data you'd like to share, or corrections to suggest? Email data@findrelief.co.uk.",
     "cta_button": "Contact us"
   },
   "support": {

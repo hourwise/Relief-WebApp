@@ -35,12 +35,12 @@ const Support: React.FC = () => {
     {
       category: 'Account',
       question: t('support.restore_purchases'),
-      answer: 'If you need to restore previous purchases or access, please contact our support team through our Contact page once it is available.',
+      answer: 'If you need help with the Relief app or website, email support@findrelief.co.uk and include enough detail for us to understand the issue.',
     },
     {
       category: 'Accessibility',
       question: t('support.accessibility_support'),
-      answer: 'Relief is built with accessibility first. If you experience any difficulties using the app or website, please let us know through our Contact page.',
+      answer: 'Relief is built with accessibility in mind. If you experience difficulties using the app or website, email support@findrelief.co.uk and describe what happened.',
     },
   ]
 

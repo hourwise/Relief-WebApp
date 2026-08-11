@@ -43,7 +43,7 @@ duplicate the mobile app.
 | `npm ci` | PASS |
 | `npm run build` | PASS |
 | `npm run lint` | PASS (no TypeScript-version warning after v8 upgrade) |
-| `npm audit` | 4 findings remain — see §12 (no `--force` used) |
+| `npm audit` | 4 findings remain — see §13 (no `--force` used) |
 
 ## 4. Pages / routes
 
@@ -147,23 +147,43 @@ Planned functionality may appear, but only clearly labelled **Planned** /
 - Canonical production domain: **`https://findrelief.co.uk`** (configured in the
   frontend defaults and `.env.example`; DNS and hosting remain external setup).
 - `www.findrelief.co.uk` is not canonical and is intended to redirect at Cloudflare.
-- Contact email addresses: **not set** (PLANNED) — conceptually
-  `hello@`, `support@`, `privacy@`, `data@` (to be confirmed).
+- Verified public contact addresses:
+  `hello@findrelief.co.uk`, `support@findrelief.co.uk`,
+  `privacy@findrelief.co.uk`, and `data@findrelief.co.uk`.
+- Operator identity for legal/controller wording: **Phil Geran trading as
+  PCGsoft**, a UK sole trader.
+- A current public business/correspondence address has been supplied and
+  expressly authorised by the owner for temporary use. It must remain
+  configuration-driven and must not be committed to this public repository.
+- Replace it if a separate suitable business/service address is obtained.
 - App store links: `null` in `src/lib/config.ts` until real release URLs
   exist. Android preview is in preparation (PLANNED); iOS is PLANNED.
 
-## 11. Known placeholders
+## 11. Internal compliance note
+
+- Operator identified: **Phil Geran trading as PCGsoft**.
+- The current public business/correspondence address has been supplied and
+  expressly authorised by the owner for temporary use.
+- The address must remain configuration-driven rather than committed into the
+  public repository or `.env.example`.
+- Replace it if a separate suitable business/service address is obtained.
+- Do not invent or expose any other address.
+- Future improvement: consider self-hosting the current open-source font files
+  so the public website does not need to contact Google Fonts at page load.
+
+## 12. Known placeholders
 
 - Home hero image is illustrative/placeholder and is labelled as such on
   the page (the app UI is still in development).
 - Press kit download assets: "Coming Soon".
-- `[Company name]` / `[Company address]`: to be confirmed before launch.
+- Current public business/correspondence address is deployment-configured and
+  intentionally absent from tracked source.
 - Blog and Social pages show honest empty/"coming soon" states — no
   invented articles, testimonials, metrics, or publication history.
 - Legal pages (Privacy / Terms / GDPR) carry a marker that final legal
   review is required before launch; no certifications or compliance claims.
 
-## 12. Dependency / audit findings (2026-08-07)
+## 13. Dependency / audit findings (2026-08-07)
 
 - **@typescript-eslint** upgraded v7 → v8 to support TypeScript 5.9
   (v7 warned against TS 5.9.x). Lint warning resolved; no app behaviour
@@ -178,20 +198,22 @@ Planned functionality may appear, but only clearly labelled **Planned** /
     SSR constructor-injection advisory): fix requires v7 (major). The site
     is a static SPA without SSR; revisit before launch if warranted.
 
-## 13. Security blockers (before public launch)
+## 14. Security blockers (before public launch)
 
 1. Server-side form endpoints with validation, sanitisation, IP-based rate
    limiting, CSRF, and anti-spam (Cloudflare Turnstile recommended).
 2. Final legal review of Privacy / Terms / GDPR.
-3. Real domain, email addresses, and data-controller details.
+3. Final legal confirmation of the temporary public address disclosure and
+   controller details.
 4. Secure handling of any future Supabase integration (service keys never
    in `VITE_*`).
 
-## 14. Outstanding launch requirements
+## 15. Outstanding launch requirements
 
 1. Secure form backend (Cloudflare Worker / Pages Function) + Turnstile
 2. Legal review sign-off on Privacy / Terms / GDPR
-3. DNS, email routing, confirmed owner/controller details, and Resend addresses
+3. DNS, email routing, review of the temporary public address disclosure, and
+   final owner/controller legal confirmation
 4. Cloudflare Pages deployment
 5. Accessibility audit against the **WCAG AA target** (a formal "WCAG AA
    compliant" claim may only be made after a real audit)

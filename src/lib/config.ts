@@ -6,10 +6,14 @@ export const BRAND = {
   name: import.meta.env.VITE_SITE_NAME || 'Relief',
   strapline: 'Find Comfort, Feel Relief',
   description: import.meta.env.VITE_SITE_DESCRIPTION || 'Find clean, private and accessible facilities nearby',
-  // No final domain exists yet. Set VITE_SITE_URL when one is live.
-  // Do not invent a production-looking URL as a default.
   siteUrl: import.meta.env.VITE_SITE_URL || 'https://findrelief.co.uk',
 } as const
+
+/**
+ * Public business address supplied through private deployment configuration.
+ * Do not place the live value in tracked source or `.env.example`.
+ */
+export const BUSINESS_ADDRESS = import.meta.env.VITE_BUSINESS_ADDRESS || ''
 
 export const COLORS = {
   primary: '#0F766E',
@@ -24,10 +28,8 @@ export const COLORS = {
 } as const
 
 /**
- * Contact email addresses are NOT configured yet.
- * Final addresses (potentially hello@, support@, privacy@, data@) will be
- * centralised here once the domain and email setup exist. Do not hard-code
- * invented production-looking addresses into public pages.
+ * Verified public contact addresses are rendered on the Contact and legal pages.
+ * Keep private credentials and mail-service API keys out of frontend code.
  */
 
 /**

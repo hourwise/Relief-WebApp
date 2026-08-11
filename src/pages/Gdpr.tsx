@@ -4,187 +4,76 @@ import Hero from '@/components/Hero'
 import { CheckCircle } from 'lucide-react'
 import { BRAND } from '@/lib/config'
 
-/**
- * GDPR Rights page
- */
 const Gdpr: React.FC = () => {
   const { t } = useTranslation()
+
   React.useEffect(() => {
     document.title = `${t('gdpr.page_title')} | ${BRAND.name}`
   }, [t])
 
   const rights = [
-    {
-      title: t('gdpr.right_access'),
-      description: t('gdpr.right_access_desc'),
-    },
-    {
-      title: t('gdpr.right_delete'),
-      description: t('gdpr.right_delete_desc'),
-    },
-    {
-      title: t('gdpr.right_correct'),
-      description: t('gdpr.right_correct_desc'),
-    },
-    {
-      title: t('gdpr.right_withdraw'),
-      description: t('gdpr.right_withdraw_desc'),
-    },
-    {
-      title: t('gdpr.right_opt_out'),
-      description: t('gdpr.right_opt_out_desc'),
-    },
+    { title: 'Access', description: 'Ask whether we process your personal information and request a copy of it.' },
+    { title: 'Correction', description: 'Ask us to correct information that is inaccurate or incomplete.' },
+    { title: 'Erasure', description: 'Ask us to delete information where the law provides that right.' },
+    { title: 'Restriction', description: 'Ask us to limit processing in circumstances provided by data-protection law.' },
+    { title: 'Objection', description: 'Object to certain processing, including processing based on legitimate interests, where the law allows.' },
+    { title: 'Data portability', description: 'In some circumstances, receive information you provided in a usable format or ask us to transmit it.' },
+    { title: 'Withdraw consent', description: 'Where processing relies on consent, withdraw it for the future.' },
   ]
 
   return (
     <div>
-      <Hero
-        title={t('gdpr.heading')}
-        description={t('gdpr.page_description')}
-      />
+      <Hero title={t('gdpr.heading')} description={t('gdpr.page_description')} />
 
       <section className="py-16 md:py-24 bg-white">
         <div className="section-container max-w-3xl">
           <div className="mb-8 p-4 md:p-6 bg-warning/10 border-l-4 border-warning rounded">
-            <p className="font-semibold text-text-primary">
-              This page is a working draft and requires final legal review before launch.
-            </p>
+            <p className="font-semibold text-text-primary">This information remains subject to final legal review.</p>
           </div>
 
-          {/* Your Rights */}
-          <div className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-8">
-              {t('gdpr.your_rights')}
-            </h2>
-
+          <section className="mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-8">Your data rights</h2>
             <div className="space-y-6">
-              {rights.map((right, index) => (
-                <div key={index} className="flex gap-4">
+              {rights.map((right) => (
+                <div key={right.title} className="flex gap-4">
                   <CheckCircle className="w-6 h-6 text-success flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-text-primary mb-2">
-                      {right.title}
-                    </h3>
-                    <p className="text-text-muted">
-                      {right.description}
-                    </p>
+                    <h3 className="font-semibold text-text-primary mb-2">Right to {right.title}</h3>
+                    <p className="text-text-muted">{right.description}</p>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+            <p className="text-text-muted mt-6">
+              These rights are not absolute and may not apply in every circumstance.
+            </p>
+          </section>
 
-          {/* How to Make a Request */}
-          <section className="bg-primary-dark/5 p-6 md:p-8 rounded-card mb-16">
-            <h2 className="text-2xl font-bold text-text-primary mb-4">
-              How to Make a Data Request
-            </h2>
+          <section className="bg-primary-dark/5 p-6 md:p-8 rounded-card mb-10">
+            <h2 className="text-2xl font-bold text-text-primary mb-4">How to make a request</h2>
             <p className="text-text-muted mb-4">
-              To exercise any of your rights, please contact us once our secure contact form is available
-              (details will be published here before launch). When submitting a request, please include:
+              Email <a href="mailto:privacy@findrelief.co.uk" className="text-primary-dark hover:underline">privacy@findrelief.co.uk</a>. You do not need to use a form. Please describe your request and include enough information for us to understand what you need; reasonable identity verification may be required where necessary to protect personal information.
             </p>
-            <ol className="space-y-2 text-text-muted ml-4 list-decimal">
-              <li>Your full name</li>
-              <li>Your email address</li>
-              <li>Type of request (access, deletion, correction, etc.)</li>
-              <li>Any relevant account details</li>
-            </ol>
-            <p className="text-text-muted mt-4">
-              <strong>Timeline:</strong> We will respond to all valid requests within 30 days,
-              as required by GDPR.
+            <p className="text-text-muted">
+              We will respond without undue delay and normally within one month. Where permitted by law, the time may be extended by up to a further two months for a complex request or multiple requests. If an extension is needed, we will explain this within the initial one-month period. We will not promise a fixed response time for every type of request or circumstance.
             </p>
           </section>
 
-          {/* Request Form Placeholder */}
-          <section className="card p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-text-primary mb-6">
-              Submit a Data Request
-            </h2>
-            <form className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-text-primary mb-2">
-                  {t('contact.name')} *
-                </label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary-light"
-                  disabled
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-text-primary mb-2">
-                  {t('contact.email')} *
-                </label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary-light"
-                  disabled
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-text-primary mb-2">
-                  {t('gdpr.request_type')} *
-                </label>
-                <select className="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary-light" disabled>
-                  <option value="">{t('gdpr.request_data_access')}</option>
-                  <option value="deletion">{t('gdpr.request_data_deletion')}</option>
-                  <option value="correction">{t('gdpr.request_data_correction')}</option>
-                  <option value="withdraw">{t('gdpr.request_withdraw_consent')}</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    className="mt-1"
-                    disabled
-                  />
-                  <span className="text-sm text-text-muted">
-                    I understand that this will be processed according to GDPR regulations
-                    and that I will receive a response within 30 days.
-                  </span>
-                </label>
-              </div>
-
-              <button
-                type="submit"
-                className="btn-primary w-full"
-                disabled
-              >
-                Submit Request
-              </button>
-              <p className="text-xs text-text-muted text-center">
-                Form coming soon - security review in progress
-              </p>
-            </form>
+          <section className="card p-6 md:p-8 mb-16">
+            <h2 className="text-2xl font-bold text-text-primary mb-4">Online request form</h2>
+            <p className="text-text-muted">
+              The website request form is intentionally disabled while secure server-side form infrastructure is being prepared. This does not prevent you from exercising your rights by emailing the address above.
+            </p>
           </section>
 
-          {/* Additional Info */}
-          <section className="mt-16 pt-8 border-t border-gray-200">
-            <h3 className="text-lg font-semibold text-text-primary mb-4">
-              More Information
-            </h3>
-            <ul className="space-y-3 text-text-muted">
-              <li>
-                • <strong>Right to Lodge a Complaint:</strong> If you believe we have violated
-                your rights, you can lodge a complaint with your local data protection authority.
-              </li>
-              <li>
-                • <strong>No Cost:</strong> Except for manifestly unfounded or excessive requests,
-                we will not charge a fee for exercising your rights.
-              </li>
-              <li>
-                • <strong>Verification:</strong> We may ask you to verify your identity before
-                processing your request for security reasons.
-              </li>
-              <li>
-                • <strong>EU Citizens:</strong> If you are in the EU, you are covered by GDPR.
-                If you are outside the EU, your rights may be determined by your local laws.
-              </li>
-            </ul>
+          <section className="pt-8 border-t border-gray-200">
+            <h2 className="text-2xl font-bold text-text-primary mb-4">Complaints and fees</h2>
+            <p className="text-text-muted mb-4">
+              You can complain to the UK Information Commissioner’s Office if you are concerned about how your information is handled. See <a href="https://ico.org.uk/make-a-complaint/" className="text-primary-dark hover:underline">ico.org.uk/make-a-complaint</a>; this does not imply ICO endorsement of Relief.
+            </p>
+            <p className="text-text-muted">
+              Requests are normally free. The law allows a reasonable fee or refusal in limited cases, such as a request that is manifestly unfounded or excessive.
+            </p>
           </section>
         </div>
       </section>
@@ -193,4 +82,3 @@ const Gdpr: React.FC = () => {
 }
 
 export default Gdpr
-

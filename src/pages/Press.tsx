@@ -137,7 +137,7 @@ const Press: React.FC = () => {
               For press queries, interviews, or media requests:
             </p>
             <p className="text-text-muted">
-              Press contact details will be published once our contact infrastructure is ready.
+              Email <a href="mailto:hello@findrelief.co.uk" className="text-primary-dark hover:underline">hello@findrelief.co.uk</a> for press queries, interviews, or media requests.
             </p>
           </div>
         </div>
