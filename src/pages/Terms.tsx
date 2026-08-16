@@ -46,7 +46,7 @@ const Terms: React.FC = () => {
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">Using the website</h2>
               <p className="text-text-muted">
-                You may use the website for lawful, personal, and informational purposes. Please do not misuse it, attempt unauthorised access, interfere with its operation, submit harmful material, or use it to mislead or harm others. The website’s contribution and report forms are currently disabled; these terms do not treat them as active submission or review services.
+                You may use the website for lawful, personal, and informational purposes. Please do not misuse it, attempt unauthorised access, interfere with its operation, submit harmful material, or use it to mislead or harm others. The website’s Add Facility contribution form remains disabled; the Contact, Report Bug, and GDPR forms are intake services and are not public review or moderation services.
               </p>
             </section>
 

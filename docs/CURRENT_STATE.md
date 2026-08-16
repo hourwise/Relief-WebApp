@@ -1,264 +1,68 @@
-# Relief Web — Current State (Source of Truth)
+# Relief Web — Current State
 
 > Authoritative status for the Relief public website.
-> Last updated: 2026-08-11
-> Branch: `main` (production source branch)
+> Last updated: 2026-08-16
 
-Status terms used throughout this document:
+Status terms: **VERIFIED**, **IMPLEMENTED**, **IMPLEMENTED BUT REQUIRES EXTERNAL CONFIG**, **DISABLED**, **PLANNED**, **DECISION REQUIRED**, and **NOT TESTED**.
 
-- **VERIFIED** — confirmed working / true
-- **IMPLEMENTED BUT DISABLED** — code exists but intentionally switched off
-- **PLANNED** — intended, not yet built
-- **EXTERNAL SETUP REQUIRED** — needs a third-party account/service to exist
-- **NOT TESTED** — present but not validated
+## Website and deployment
 
----
+- **VERIFIED:** Vite 5, React 18, TypeScript, Tailwind CSS, React Router, i18next, Zod, React Hook Form, Framer Motion, and Lucide are used.
+- **VERIFIED:** The intended production source branch is `main`, with Cloudflare Pages serving `https://findrelief.co.uk`.
+- **VERIFIED:** The site remains a static SPA with no browser-side private credentials. `VITE_*` values are public.
+- **NOT TESTED:** This batch does not verify the live Cloudflare deployment or production function routing.
 
-## 1. Project purpose
+## Public routes
 
-The public companion website for the **Relief** mobile app. Its roles:
+| Route | State |
+| --- | --- |
+| `/`, `/about`, `/support`, `/data` | VERIFIED |
+| `/privacy`, `/terms`, `/gdpr` | IMPLEMENTED; final legal review required |
+| `/contact` | IMPLEMENTED BUT REQUIRES EXTERNAL CONFIG |
+| `/report-bug` | IMPLEMENTED BUT REQUIRES EXTERNAL CONFIG |
+| `/delete-account` | IMPLEMENTED as an external request/help route |
+| `/add-facility` | DISABLED |
+| `/blog`, `/social`, `/press` | VERIFIED placeholders / PLANNED content |
 
-1. Relief's public / brand home
-2. Android app information & download hub (once a public build exists)
-3. Support centre
-4. Privacy / GDPR / legal information centre
-5. Data transparency centre (`/data`)
-6. Future facility contribution / correction gateway (moderated)
-7. Future partnerships / data-provider contact point
-8. Blog / project-update home
+## Forms and server architecture
 
-It is **not** a browser version of the interactive facility map and does not
-duplicate the mobile app.
+- **IMPLEMENTED:** Contact, Report Bug, and GDPR/data-rights forms use React Hook Form, existing Zod schemas, accessible labels, field-level errors, loading/submit protection, success/error states, and no screenshot upload.
+- **IMPLEMENTED:** Same-origin Pages Function endpoints are in `functions/api/contact.ts`, `functions/api/report-bug.ts`, and `functions/api/gdpr-request.ts`.
+- **IMPLEMENTED:** The shared handler checks POST method, JSON content type, a 32 KB body limit, strict accepted fields, Zod validation, honeypots, Turnstile, generic errors, KV-backed per-IP bucket limits, and server-side email delivery.
+- **IMPLEMENTED BUT REQUIRES EXTERNAL CONFIG:** Outbound delivery is prepared for Resend; no provider key is committed or available in browser code.
+- **IMPLEMENTED BUT REQUIRES EXTERNAL CONFIG:** The browser Turnstile integration fails closed when `VITE_TURNSTILE_SITE_KEY` is absent. The server fails closed when `TURNSTILE_SECRET_KEY` or `FORM_RATE_LIMIT_KV` is absent.
+- **DISABLED:** Add Facility and newsletter. No public website form writes to Supabase in this batch.
 
-## 2. Stack (VERIFIED)
+Required deployment names only: `RESEND_API_KEY`, `RESEND_FROM_EMAIL` (optional), `TURNSTILE_SECRET_KEY`, `FORM_RATE_LIMIT_KV`, and public `VITE_TURNSTILE_SITE_KEY`.
 
-- Vite 5 + React 18 + TypeScript 5.9 + Tailwind CSS 3
-- React Router v6, i18next, Zod, React Hook Form, Framer Motion, Lucide
-- ESLint 8 + @typescript-eslint v8 (supports TS 5.9)
+## Privacy and data handling
 
-## 3. Quality gates (VERIFIED)
+- **IMPLEMENTED:** Privacy copy now describes the three enabled form categories, the information they receive, spam/security processing, Cloudflare/Pages Function processing, server-side email-provider involvement, and the absence of a fixed retention period.
+- **IMPLEMENTED:** The GDPR form generates a non-sensitive request reference and never automatically deletes an account.
+- **DECISION REQUIRED:** Final retention procedure, provider terms, transfer safeguards, and legal wording review.
+- **VERIFIED:** Direct email aliases are `hello@findrelief.co.uk`, `support@findrelief.co.uk`, `privacy@findrelief.co.uk`, and `data@findrelief.co.uk`; Cloudflare Email Routing is not changed by this batch.
 
-| Gate | Result |
-|------|--------|
-| `npm ci` | PASS |
-| `npm run build` | PASS |
-| `npm run lint` | PASS (no TypeScript-version warning after v8 upgrade) |
-| `npm audit` | 4 findings remain — see §13 (no `--force` used) |
+## Account deletion
 
-## 4. Pages / routes
+- **IMPLEMENTED:** `/delete-account` is a public route suitable for an external request link and works without the app installed.
+- **NOT VERIFIED:** The inspected mobile repository `hourwise/Relief` at `9cfda375912a84b9ea90b6a267f1678341b055eb` contains no `ACCOUNT_DELETION_CONTRACT.md`, deletion Edge Function, or in-app deletion screen; its current documentation still says deletion is not implemented.
+- **SAFETY POSITION:** The website does not claim in-app automated deletion, a subscription-history guard, deletion timing, or deletion of particular mobile records. The route directs users to `privacy@findrelief.co.uk`, says not to send passwords, and allows identity verification where necessary.
+- **DECISION REQUIRED:** Reconcile the mobile/backend source before publishing copy that promises an in-app deletion workflow.
 
-| Route | Page | State |
-|-------|------|-------|
-| `/` | Home | VERIFIED |
-| `/about` | About | VERIFIED |
-| `/support` | Support | VERIFIED |
-| `/data` | Data & Sources | VERIFIED |
-| `/privacy` | Privacy | VERIFIED (final legal review required) |
-| `/terms` | Terms | VERIFIED (final legal review required) |
-| `/gdpr` | GDPR rights | VERIFIED (legal review required; request form disabled) |
-| `/contact` | Contact | VERIFIED (form IMPLEMENTED BUT DISABLED) |
-| `/add-facility` | Add Facility | VERIFIED (form IMPLEMENTED BUT DISABLED) |
-| `/report-bug` | Report Bug | VERIFIED (form IMPLEMENTED BUT DISABLED) |
-| `/blog` | Blog index | VERIFIED (no posts — PLANNED) |
-| `/blog/:slug` | Blog post | PLANNED (route not implemented) |
-| `/social` | Social hub | VERIFIED (no live accounts — PLANNED) |
-| `/press` | Press kit | VERIFIED (download assets PLANNED) |
-| `*` | 404 | VERIFIED |
+## Community and facility intake
 
-## 5. Product features the website may truthfully describe
+- **VERIFIED:** The inspected mobile app uses authenticated `facility_submissions` for pending new facilities, `correction_requests` for field-level corrections, and temporary facility issue reports. It also contains provenance (`facility_sources`/`field_provenance`), photo moderation, badges, and rate-limit structures.
+- **DECISION REQUIRED:** The mobile baseline contains both `facility_reports` and `temporary_reports`, while the service/UI use the temporary-report model. Reconcile that contract before web integration.
+- **DISABLED:** The WebApp Add Facility form remains disabled and does not write directly to canonical `facilities`.
+- **IMPLEMENTED:** The audit and recommended staging/moderation design are documented in `docs/COMMUNITY_INTAKE_PLAN.md`.
+- **NO PRODUCTION CHANGE:** No Supabase migration, RLS change, grant, or destructive command was applied.
 
-Verified mobile capabilities (Android preview build):
+## External/manual actions remaining
 
-- Guest facility discovery
-- Map / List Find experience
-- Need One Now
-- Current-location centring
-- Facility details and directions
-- Search
-- Favourites for signed-in users
-- Reports / corrections for signed-in users
-- Filters backed by real live data: Cost (Any / Free / Paid), Open now,
-  Open 24 hours, Accessible, RADAR Key, Baby changing, Gender-neutral,
-  Family friendly, Staff nearby
-
-The website deliberately does **not** claim: thousands of users, live
-community ratings, privacy ratings as an active feature, grab-rail or
-step-free filtering as currently available, real-time availability,
-universally verified opening times, AI/smart recommendations, route
-planning, offline maps, iOS availability, or app-store availability.
-
-Planned functionality may appear, but only clearly labelled **Planned** /
-**Coming later** / **In development**, with no speculative launch dates.
-
-## A. CURRENT PUBLIC WEBSITE — LIVE
-
-- Relief is deployed on Cloudflare Pages from the `main` branch.
-- The canonical public domain is **`https://findrelief.co.uk`**.
-- The custom domain is active and SSL is enabled.
-- Apex DNS is proxied through Cloudflare and points to
-  `relief-webapp.pages.dev`.
-- `relief-webapp.pages.dev` remains the underlying Pages hostname. This
-  document does not claim that it redirects to the custom domain.
-- `www.findrelief.co.uk` is a proxied, redirect-only hostname. It permanently
-  redirects to the apex domain while preserving paths and query strings. This
-  has been verified with `/privacy?test=1`.
-- The current production build is a static informational SPA. Forms and user
-  submission workflows are intentionally not part of the live service.
-- Contact/legal reconciliation is committed at
-  `7006229b8b5437bc29a5e5df7f593cb33bd45fb7`.
-
-## B. CURRENTLY DISABLED / SAFE
-
-- All web forms (Contact, Add Facility, Report Bug, GDPR request, newsletter)
-  are intentionally disabled. No fake success states are presented; pages
-  show an honest "coming soon" message.
-- No Contact, GDPR, Add Facility, Report Bug, or newsletter backend exists.
-- No intentionally installed analytics or tracking system is active.
-- Google Fonts remains externally loaded. Self-hosting the current open-source
-  font files remains a future privacy/performance improvement.
-- Email sending through Resend is not connected. The public email aliases
-  listed below are active for correspondence through Cloudflare Email Routing.
-
-## C. BEFORE ENABLING FORMS OR USER SUBMISSION
-
-- Build and review secure server-side form endpoints with validation,
-  sanitisation, IP-based rate limiting, CSRF protection, and anti-spam
-  controls such as Cloudflare Turnstile.
-- Define handling, retention, access controls, and deletion procedures for
-  submitted personal information.
-- Complete final legal review of Privacy, Terms, and GDPR pages, including
-  controller details and the temporary public address disclosure.
-- If Supabase or another backend is introduced, keep service keys out of
-  `VITE_*` variables and review the resulting provider and data flows.
-- Choose and configure any server-side email delivery service only after the
-  form design, privacy notice, and operational safeguards are ready.
-
-Intended future form architecture:
-
-  ```
-  Browser
-    → Cloudflare Worker / Pages Function (server-side endpoint)
-    → validation / anti-spam / rate limiting
-    → Resend (transactional email)
-  ```
-
-- There is deliberately **no frontend email credential** (nothing like a
-  Resend key in `VITE_*` variables — anything `VITE_` is public).
-- Add Facility is a future contribution gateway: submissions will be
-  moderated, will not become live immediately, and no account is implied.
-
-## 8. Data & Sources
-
-- Current live dataset baseline: **Toilet Map UK** (VERIFIED — the only
-  source currently in the database).
-- Future enrichment work (transport operators, councils, specialist
-  accessibility organisations): **research only — NOT part of the live
-  dataset**; no partnerships or logos claimed.
-- Community contributions / corrections: PLANNED (moderated).
-- The database records source/provenance; data can become stale; Relief
-  aims to prefer authoritative/current evidence and reconciles facilities
-  from multiple sources rather than showing duplicates.
-
-## 10. Domain / email status
-
-- Canonical production domain: **`https://findrelief.co.uk`**.
-- Cloudflare Pages deployment, custom-domain activation, SSL, and proxied DNS
-  are live as described in section A.
-- Verified public contact aliases:
-  `hello@findrelief.co.uk`, `support@findrelief.co.uk`,
-  `privacy@findrelief.co.uk`, and `data@findrelief.co.uk`.
-- Cloudflare Email Routing is active and forwards these aliases to a verified
-  private destination mailbox. The private destination address is not stored
-  in repository documentation.
-- Operator identity for legal/controller wording: **Phil Geran trading as
-  PCGsoft**, a UK sole trader.
-- The public business address is supplied through `VITE_BUSINESS_ADDRESS`.
-  Production verification that the configured value is visibly rendering on
-  the live legal/contact pages remains outstanding. The real value must remain
-  absent from Git-tracked files and repository documentation.
-- App store links: `null` in `src/lib/config.ts` until real release URLs
-  exist. Android public release/store link is future; iOS is future.
-
-## 11. Internal compliance note
-
-- Operator identified: **Phil Geran trading as PCGsoft**.
-- The public business address must remain configuration-driven through
-  `VITE_BUSINESS_ADDRESS` rather than committed into the public repository or
-  `.env.example`.
-- Do not mark the address as production-configured until visible rendering on
-  the live legal/contact pages has been confirmed.
-- If a temporary public address is used, replace it if a separate suitable
-  business/service address is obtained. Do not invent or expose any other
-  address.
-- Future improvement: consider self-hosting the current open-source font files
-  so the public website does not need to contact Google Fonts at page load.
-
-## D. FUTURE PRODUCT/CONTENT WORK
-
-- Home hero image is illustrative/placeholder and is labelled as such on the
-  page (the app UI is still in development).
-- Blog and Social pages show honest empty/"coming soon" states. Blog posts,
-  social accounts, and press content/assets remain incomplete or planned; no
-  invented articles, testimonials, metrics, or publication history.
-- Android public release and store link remain future work; iOS remains future.
-- Data-provider / partnership workflows remain future work.
-- Legal pages (Privacy / Terms / GDPR) carry a marker that final legal review
-  is required; no certifications, formal legal sign-off, or compliance claims
-  are made.
-
-## 12. Known placeholders
-
-- Home hero image is illustrative/placeholder and is labelled as such on the
-  page (the app UI is still in development).
-- Press kit download assets: "Coming Soon".
-- The production business address value is intentionally absent from tracked
-  source and is pending visible production verification.
-
-## 13. Dependency / audit findings (2026-08-07)
-
-- **@typescript-eslint** upgraded v7 → v8 to support TypeScript 5.9
-  (v7 warned against TS 5.9.x). Lint warning resolved; no app behaviour
-  change.
-- **postcss** high-severity path-traversal advisory — fixed via
-  `npm audit fix` (non-breaking, within 8.x). No `--force` used.
-- **Deferred (breaking upgrades, deliberately not applied):**
-  - `esbuild` / `vite` (moderate): dev-server request vulnerability; fix
-    requires Vite 8 (major). Dev-time only; revisit during a dedicated
-    dependency-modernisation effort.
-  - `react-router` / `react-router-dom` (moderate open redirect + high
-    SSR constructor-injection advisory): fix requires v7 (major). The site
-    is a static SPA without SSR; revisit before launch if warranted.
-
-## 14. Genuine remaining review / future items
-
-1. Final legal and compliance review of Privacy / Terms / GDPR, including
-   controller details, provider arrangements, international-transfer review,
-   and the temporary public address disclosure.
-2. Production verification that `VITE_BUSINESS_ADDRESS` visibly renders on
-   the live legal/contact pages.
-3. Accessibility review against the WCAG AA target; no WCAG AA compliance
-   claim is made here.
-4. Secure form backend, Turnstile, retention procedures, and any email-sending
-   integration before enabling user submission.
-5. Android public release/store link and later iOS release.
-6. Data-provider / partnership process, first blog posts, real social
-   accounts, and completed press assets.
-7. Deferred dependency upgrades and audit findings remain documented in
-   section 13; no major dependency upgrades were introduced for this state
-   reconciliation.
-
----
-
-## Superseded historical documents
-
-The following docs describe the original scaffolding and are retained for
-history only; they are marked **SUPERSEDED** and may contain outdated claims
-(e.g., Vercel deployment, phase-complete language):
-
-- `BUILD_SUMMARY.md`
-- `SCAFFOLDING_COMPLETE.md`
-- `QUICK_REFERENCE.md`
-- `SETUP_CHECKLIST.md`
-- `relief_website_build_plan.md`
-- `DEVELOPMENT.md` (development guide; deployment section updated to
-  Cloudflare intent)
+1. Configure the listed Cloudflare Pages Function secrets/binding and public Turnstile site key.
+2. Create/verify the Resend sending-domain configuration and confirm the sender address.
+3. Deploy and manually test Pages Function routing, Turnstile, KV limits, and mail delivery.
+4. Complete legal review of Privacy, Terms, GDPR, retention, and provider/transfer wording.
+5. Reconcile the mobile account-deletion implementation and contract; only then update the public deletion page with verified in-app steps.
+6. Approve the community intake schema, staging queue, moderation flow, and any future Supabase migration separately.
+7. Add the public deletion URL to the relevant app-store console only after the mobile flow is real and verified.

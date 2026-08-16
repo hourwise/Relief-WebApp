@@ -48,21 +48,22 @@ export interface AddFacilityFormData {
   address: string
   postcode: string
   town_city: string
-  latitude?: number
-  longitude?: number
-  access_type: string
-  opening_hours: string
-  free_or_paid: 'free' | 'paid'
-  accessible_toilet: boolean
-  wheelchair_access: boolean
-  radar_key: boolean
-  baby_changing: boolean
-  changing_places: boolean
-  privacy_notes?: string
-  cleanliness_notes?: string
-  photos?: File[]
-  submitter_name?: string
-  submitter_email?: string
+  latitude: number
+  longitude: number
+  country: string
+  access_notes: string
+  is_free: boolean
+  price_note: string
+  is_accessible: boolean
+  is_disabled_access: boolean
+  has_baby_changing: boolean
+  has_family_room: boolean
+  is_gender_neutral: boolean
+  is_single_occupancy: boolean
+  is_24h: boolean
+  notes: string
+  access_codes: string
+  submission_notes: string
   consent: boolean
   honeypot?: string
 }

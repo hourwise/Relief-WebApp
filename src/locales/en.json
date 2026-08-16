@@ -85,8 +85,8 @@
     "message": "Message",
     "sent": "Message sent successfully!",
     "error": "Failed to send message. Please try again.",
-    "coming_soon": "Email contact routes are available below. The website form remains disabled while secure submission infrastructure is prepared.",
-    "form_coming_soon": "Contact form coming soon — submissions are disabled while we build secure form infrastructure."
+    "coming_soon": "Use the form for ordinary enquiries, or email the specialist address that best matches your question.",
+    "form_coming_soon": "The contact form uses server-side validation and spam protection."
   },
   "privacy": {
     "page_title": "Privacy Policy",
@@ -138,8 +138,8 @@
     "toilet_map_uk": "The current Relief database uses the Toilet Map UK dataset as its baseline source of facility information.",
     "future_sources": "We are researching additional authoritative sources, including transport operators, councils, and specialist accessibility organisations. These are not yet part of Relief's live dataset and are described as future enrichment work.",
     "contributions_heading": "Community contributions",
-    "contributions_text": "On this public website, facility contributions and corrections from the community are not currently enabled. The Relief mobile app has an authenticated facility-submission flow, and its facility reports and correction requests are stored against the submitting user ID. The mobile audit does not establish the moderation or publication process for those submissions.",
-    "report_corrections": "For this website, if you spot incorrect information, email data@findrelief.co.uk. The website does not currently accept submissions through a form; mobile-app reports and correction requests are a separate authenticated flow.",
+    "contributions_text": "On this public website, facility contributions and corrections from the community are not currently enabled. The Relief mobile app has an authenticated facility-submission flow, field-level correction requests, and temporary issue reports that are intended for moderation or expiry. The website audit found no approved anonymous web-write contract.",
+    "report_corrections": "For this website, if you spot incorrect information, email data@findrelief.co.uk. The website does not currently accept facility submissions through a form; mobile-app reports and correction requests are a separate authenticated flow.",
     "cta_heading": "Provide or correct facility data",
     "cta_text": "Are you an organisation with facility data you'd like to share, or corrections to suggest? Email data@findrelief.co.uk.",
     "cta_button": "Contact us"

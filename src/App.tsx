@@ -10,6 +10,7 @@ import Support from '@/pages/Support'
 import DataSources from '@/pages/DataSources'
 import AddFacility from '@/pages/AddFacility'
 import ReportBug from '@/pages/ReportBug'
+import DeleteAccount from '@/pages/DeleteAccount'
 import BlogIndex from '@/pages/BlogIndex'
 import Press from '@/pages/Press'
 import Social from '@/pages/Social'
@@ -35,6 +36,7 @@ function App() {
           <Route path={ROUTES.data} element={<DataSources />} />
           <Route path={ROUTES.addFacility} element={<AddFacility />} />
           <Route path={ROUTES.reportBug} element={<ReportBug />} />
+          <Route path={ROUTES.deleteAccount} element={<DeleteAccount />} />
           <Route path={ROUTES.blog} element={<BlogIndex />} />
           <Route path={ROUTES.press} element={<Press />} />
           <Route path={ROUTES.social} element={<Social />} />
