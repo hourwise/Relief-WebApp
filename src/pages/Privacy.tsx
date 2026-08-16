@@ -85,8 +85,11 @@ const Privacy: React.FC = () => {
             <p className="text-text-muted mb-4">
                 No dedicated analytics or crash-reporting system has been verified. This website policy should not be read as saying that the website currently performs the mobile app’s processing, or that disabled or not publicly exposed mobile features are active.
             </p>
+            <p className="text-text-muted mb-4">
+                Signed-in Relief users can request automated account deletion in the mobile app from <strong>Profile → Delete account</strong>. The app asks the user to type <strong>DELETE MY ACCOUNT</strong>, select <strong>Request account deletion</strong>, and confirm the request. Recent authentication is required. When the trusted backend confirms completion, it removes the Relief sign-in account and governed user-linked data; canonical facility and source/provenance records may remain where attribution is anonymised. See the public <a href="/delete-account" className="text-primary-dark hover:underline">account-deletion page</a> for the complete route.
+            </p>
             <p className="text-text-muted">
-                The current mobile source inspected for this website release does not contain a verified in-app account-deletion route or automated deletion contract. The public <a href="/delete-account" className="text-primary-dark hover:underline">account-deletion page</a> therefore provides an email request route and does not promise automatic deletion or a particular deletion outcome.
+                Automated deletion currently fails closed for accounts with subscription or payment-history records, including any row in the mobile app's <code>user_subscriptions</code> or <code>subscription_events</code> records. No automated cleanup is performed for those accounts while retention and anonymisation treatment remains unresolved. Users in that situation, or users who no longer have the app, should email <a href="mailto:privacy@findrelief.co.uk" className="text-primary-dark hover:underline">privacy@findrelief.co.uk</a> for privacy or data-rights assistance.
             </p>
           </section>
 

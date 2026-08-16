@@ -8,7 +8,7 @@ The site is built with Vite, React, TypeScript, Tailwind, React Router, Zod, and
 
 The Contact, Report Bug, and GDPR/data-rights forms are implemented through same-origin Cloudflare Pages Functions. They require external Turnstile, Cloudflare KV, and server-side email configuration before production submissions can succeed. Add Facility and newsletter remain disabled.
 
-The public `/delete-account` route is an external deletion-request/help page. The inspected mobile source does not currently verify an in-app deletion contract, so the site makes no automated deletion claim. See [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
+The public `/delete-account` route documents the verified in-app deletion flow and provides an external privacy/data-rights route for users without app access or with subscription/payment-history limitations. See [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 
 ## Quick start
 

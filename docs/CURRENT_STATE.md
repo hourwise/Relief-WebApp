@@ -20,7 +20,7 @@ Status terms: **VERIFIED**, **IMPLEMENTED**, **IMPLEMENTED BUT REQUIRES EXTERNAL
 | `/privacy`, `/terms`, `/gdpr` | IMPLEMENTED; final legal review required |
 | `/contact` | IMPLEMENTED BUT REQUIRES EXTERNAL CONFIG |
 | `/report-bug` | IMPLEMENTED BUT REQUIRES EXTERNAL CONFIG |
-| `/delete-account` | IMPLEMENTED as an external request/help route |
+| `/delete-account` | IMPLEMENTED with verified in-app deletion guidance and external request/help route |
 | `/add-facility` | DISABLED |
 | `/blog`, `/social`, `/press` | VERIFIED placeholders / PLANNED content |
 
@@ -44,10 +44,11 @@ Required deployment names only: `RESEND_API_KEY`, `RESEND_FROM_EMAIL` (optional)
 
 ## Account deletion
 
-- **IMPLEMENTED:** `/delete-account` is a public route suitable for an external request link and works without the app installed.
-- **NOT VERIFIED:** The inspected mobile repository `hourwise/Relief` at `9cfda375912a84b9ea90b6a267f1678341b055eb` contains no `ACCOUNT_DELETION_CONTRACT.md`, deletion Edge Function, or in-app deletion screen; its current documentation still says deletion is not implemented.
-- **SAFETY POSITION:** The website does not claim in-app automated deletion, a subscription-history guard, deletion timing, or deletion of particular mobile records. The route directs users to `privacy@findrelief.co.uk`, says not to send passwords, and allows identity verification where necessary.
-- **DECISION REQUIRED:** Reconcile the mobile/backend source before publishing copy that promises an in-app deletion workflow.
+- **VERIFIED:** The production-deletion source branch `hourwise/Relief:codex/toilet-map-apply-1a-production-deploy` is pinned at `35bf8e4c034a9465976e84f0b20f3de308a8509d` for this reconciliation. Its deployed migration, `delete-account` Edge Function, mobile service/screen, and account-deletion tests define the current contract.
+- **IMPLEMENTED:** `/delete-account` documents the real in-app route: signed-in users open `Profile → Delete account`, type `DELETE MY ACCOUNT`, select `Request account deletion`, and confirm the request. It also provides `privacy@findrelief.co.uk` for users without app access or who need data-rights assistance.
+- **VERIFIED:** Successful automated deletion removes the Relief Auth sign-in account and governed user-linked data after trusted Storage and database cleanup. Canonical facility and source/provenance records may remain where the deleted user's attribution is anonymised.
+- **VERIFIED GUARD:** Accounts with any row in `user_subscriptions` or `subscription_events` fail closed before Storage or application cleanup with `SUBSCRIPTION_RETENTION_UNRESOLVED`; no automated deletion outcome is reported. Their retention/anonymisation treatment remains unresolved and they must use the privacy/data-request route.
+- **SAFETY POSITION:** The public copy does not invent a retention period or legal basis. The email route does not promise a fixed completion time and advises users not to send passwords or unnecessary sensitive information.
 
 ## Community and facility intake
 
@@ -63,6 +64,5 @@ Required deployment names only: `RESEND_API_KEY`, `RESEND_FROM_EMAIL` (optional)
 2. Create/verify the Resend sending-domain configuration and confirm the sender address.
 3. Deploy and manually test Pages Function routing, Turnstile, KV limits, and mail delivery.
 4. Complete legal review of Privacy, Terms, GDPR, retention, and provider/transfer wording.
-5. Reconcile the mobile account-deletion implementation and contract; only then update the public deletion page with verified in-app steps.
+5. Add the public deletion URL to the relevant app-store console only after the mobile flow and public deployment are confirmed in the release process.
 6. Approve the community intake schema, staging queue, moderation flow, and any future Supabase migration separately.
-7. Add the public deletion URL to the relevant app-store console only after the mobile flow is real and verified.
