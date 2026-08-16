@@ -14,6 +14,9 @@ export const BRAND = {
  * Do not place the live value in tracked source or `.env.example`.
  */
 export const BUSINESS_ADDRESS = import.meta.env.VITE_BUSINESS_ADDRESS || ''
+// This is a public site key. The matching secret stays in Cloudflare Pages
+// Functions as TURNSTILE_SECRET_KEY and is never bundled.
+export const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || ''
 
 export const COLORS = {
   primary: '#0F766E',
@@ -39,14 +42,14 @@ export const FEATURES = {
   supabaseEnabled: Boolean(import.meta.env.VITE_SUPABASE_URL),
   analyticsEnabled: Boolean(import.meta.env.VITE_ANALYTICS_ID),
   blogEnabled: true,
-  // Forms stay disabled until server-side submission, validation and
-  // moderation exist. There is intentionally NO frontend email/resend flag:
+  // Add Facility and newsletter stay disabled until their server-side
+  // submission, consent, and moderation decisions exist. There is intentionally NO frontend email/resend flag:
   // private credentials must never exist in browser code (anything VITE_ is
   // exposed to the client).
-  contactFormEnabled: false,
+  contactFormEnabled: true,
   addFacilityEnabled: false,
-  bugReportEnabled: false,
-  gdprRequestEnabled: false,
+  bugReportEnabled: true,
+  gdprRequestEnabled: true,
 } as const
 
 /**
@@ -86,6 +89,7 @@ export const ROUTES = {
   data: '/data',
   addFacility: '/add-facility',
   reportBug: '/report-bug',
+  deleteAccount: '/delete-account',
   blog: '/blog',
   blogPost: '/blog/:slug',
   social: '/social',

@@ -109,6 +109,10 @@ export const PAGE_META = {
     title: 'Report a Bug',
     description: 'Help us improve by reporting bugs in the Relief app.',
   }),
+  deleteAccount: () => generateSEOMetadata({
+    title: 'Delete an Account',
+    description: 'How to request deletion of a Relief account or personal information.',
+  }),
   blog: () => generateSEOMetadata({
     title: 'Blog',
     description: 'Read stories, updates, and insights from the Relief team.',
@@ -131,6 +135,7 @@ export const PAGE_META_BY_ROUTE: Record<string, () => SEOMetadata> = {
   [ROUTES.gdpr]: PAGE_META.gdpr,
   [ROUTES.addFacility]: PAGE_META.addFacility,
   [ROUTES.reportBug]: PAGE_META.reportBug,
+  [ROUTES.deleteAccount]: PAGE_META.deleteAccount,
   [ROUTES.blog]: PAGE_META.blog,
   [ROUTES.press]: PAGE_META.press,
 }

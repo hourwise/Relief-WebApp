@@ -27,7 +27,7 @@ const Privacy: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-sm text-text-muted mb-8">Last updated: 11 August 2026</p>
+          <p className="text-sm text-text-muted mb-8">Last updated: 16 August 2026</p>
 
           <div className="space-y-12">
             <section>
@@ -48,10 +48,10 @@ const Privacy: React.FC = () => {
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">This website</h2>
               <p className="text-text-muted mb-4">
-                The public website is an informational site about Relief. No Contact, GDPR, Add Facility, Report Bug, or newsletter form is currently enabled, so the website does not currently collect submissions through those forms.
+                The public website is an informational site about Relief. Contact, Report Bug, and GDPR/data-rights request forms are enabled through same-origin Cloudflare Pages Functions. The Add Facility and newsletter forms remain disabled.
               </p>
               <p className="text-text-muted mb-4">
-                The website does not intentionally include an analytics package, advertising pixel, or other non-essential tracking SDK. No non-essential cookies are intentionally set by the site. The codebase contains a client-side rate-limit helper for future disabled forms; it is not a submission service and is not currently used to collect website enquiries.
+                The website does not intentionally include an analytics package, advertising pixel, or other non-essential tracking SDK. No non-essential cookies are intentionally set by the site. Form requests are checked for size, accepted fields, spam signals, and rate limits; the server does not log the full contents of submitted messages or data-rights requests.
               </p>
               <p className="text-text-muted">
                 The website is hosted and delivered through Cloudflare Pages, with Cloudflare DNS, CDN, security, and proxy services used to support the site. These are third-party service providers used to operate the website; their precise legal roles and contractual arrangements are not stated here.
@@ -64,13 +64,13 @@ const Privacy: React.FC = () => {
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">Direct email correspondence</h2>
               <p className="text-text-muted mb-4">
-                The website forms are disabled, but visitors can contact Relief directly by email. If you email hello@findrelief.co.uk, support@findrelief.co.uk, privacy@findrelief.co.uk, or data@findrelief.co.uk, Phil Geran trading as PCGsoft may process the sender name, sender email address, message contents, attachments, and other information you voluntarily provide.
+                If you submit the Contact form, Relief may process your name, email address, enquiry category, message, and spam/security signals. The Report Bug form may receive your optional name and email address, platform, device model, app version, description, and reproduction steps. The GDPR/data-rights form may receive your name, email address, request type, and request details. You can also contact Relief directly by email; in that case we may process the information you choose to include, including attachments.
               </p>
               <p className="text-text-muted mb-4">
                 This may be used to respond to an enquiry, provide support, handle a privacy or data-rights request, deal with facility or data-source correspondence, and keep appropriate correspondence records where necessary.
               </p>
               <p className="text-text-muted">
-                Incoming mail for these addresses is forwarded by Cloudflare Email Routing to destination mailboxes used to receive the correspondence, including Google/Gmail mailboxes. These providers are used to operate the email service; no data-residency or international-transfer guarantee is made here. Provider terms, contractual arrangements, and transfer safeguards remain subject to final review.
+                Website form notifications and, where configured, acknowledgements are sent through a server-side email provider. The current implementation is prepared for Resend; delivery is not available until the required production configuration is added. Direct incoming mail for the published addresses is forwarded by Cloudflare Email Routing to destination mailboxes used to receive the correspondence, including Google/Gmail mailboxes. These providers are used to operate the email service; no data-residency or international-transfer guarantee is made here.
               </p>
             </section>
 
@@ -85,35 +85,38 @@ const Privacy: React.FC = () => {
             <p className="text-text-muted mb-4">
                 No dedicated analytics or crash-reporting system has been verified. This website policy should not be read as saying that the website currently performs the mobile app’s processing, or that disabled or not publicly exposed mobile features are active.
             </p>
+            <p className="text-text-muted mb-4">
+                Signed-in Relief users can request automated account deletion in the mobile app from <strong>Profile → Delete account</strong>. The app asks the user to type <strong>DELETE MY ACCOUNT</strong>, select <strong>Request account deletion</strong>, and confirm the request. Recent authentication is required. When the trusted backend confirms completion, it removes the Relief sign-in account and governed user-linked data; canonical facility and source/provenance records may remain where attribution is anonymised. See the public <a href="/delete-account" className="text-primary-dark hover:underline">account-deletion page</a> for the complete route.
+            </p>
             <p className="text-text-muted">
-                Account-specific deletion handling remains unresolved. This policy does not promise a dedicated account-deletion page, automated deletion route, or particular deletion workflow until that contract and implementation are confirmed.
+                Automated deletion currently fails closed for accounts with subscription or payment-history records, including any row in the mobile app's <code>user_subscriptions</code> or <code>subscription_events</code> records. No automated cleanup is performed for those accounts while retention and anonymisation treatment remains unresolved. Users in that situation, or users who no longer have the app, should email <a href="mailto:privacy@findrelief.co.uk" className="text-primary-dark hover:underline">privacy@findrelief.co.uk</a> for privacy or data-rights assistance.
             </p>
           </section>
 
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">Information and purposes</h2>
               <p className="text-text-muted mb-4">
-                If you email one of the published addresses, we may receive the information you choose to include, such as your name, email address, message, and any attachments. We use it to respond to your enquiry, provide support, consider privacy or data-rights requests, or review facility and data-source information.
+                We use form and email information to respond to enquiries, provide support, investigate bug reports, handle privacy or data-rights requests, and review facility or data-source correspondence.
               </p>
               <p className="text-text-muted mb-4">
                 The likely lawful basis depends on the enquiry. It may be legitimate interests in responding to a voluntary enquiry, taking steps at your request, complying with a legal obligation, or another basis that must be confirmed for the particular processing. We do not claim that every basis applies to every message.
               </p>
               <p className="text-text-muted">
-                We do not currently receive website facility submissions, reviews, or contact-form content because those features are disabled.
+                We do not currently receive public website facility submissions, reviews, or newsletter subscriptions because those features remain disabled.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">Recipients and international transfers</h2>
               <p className="text-text-muted">
-                Information may be handled by email, hosting, security, or other service providers where necessary to operate the relevant service. The specific providers, recipient categories, and any international-transfer safeguards will be confirmed before the relevant processing is enabled. We do not add recipients or transfers here merely as placeholders.
+                Information may be handled by Cloudflare Pages and related security services, Cloudflare Email Routing for direct email, and the configured server-side email provider for form delivery. The specific provider terms, recipient categories, and any international-transfer safeguards remain subject to final review. We do not claim that any provider is UK-only.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">Retention</h2>
             <p className="text-text-muted">
-                We keep direct email correspondence only for as long as it is reasonably needed for the enquiry or support issue, to handle a legal obligation or dispute, or to maintain a legitimate and appropriate business record. Specific retention periods and deletion processes remain subject to final policy review; no arbitrary fixed period is stated here. Retention and deletion arrangements for mobile-app account data remain subject to the unresolved account-deletion contract.
+                We keep form and direct email correspondence only for as long as it is reasonably needed for the enquiry, bug, or rights request, to handle a legal obligation or dispute, or to maintain a legitimate and appropriate business record. Specific retention periods and deletion procedures remain subject to final policy review; no arbitrary fixed period is stated here.
             </p>
             </section>
 
