@@ -70,7 +70,7 @@ const Terms: React.FC = () => {
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">App availability</h2>
               <p className="text-text-muted">
-                The Relief mobile application is being developed and tested. No promise is made here about availability on iOS, Android, the Apple App Store, Google Play, or any other store until a genuine release and link are published.
+                The Relief mobile application is a separate service. Features and availability may vary by release; any App Store or Google Play availability is only as stated in the relevant official store listing.
               </p>
             </section>
 
@@ -94,7 +94,7 @@ const Terms: React.FC = () => {
             <section>
               <h2 className="text-2xl font-bold text-text-primary mb-4">Contact</h2>
               <p className="text-text-muted">
-                For general or business enquiries, email <a href="mailto:hello@findrelief.co.uk" className="text-primary-dark hover:underline">hello@findrelief.co.uk</a>. For support, use <a href="mailto:support@findrelief.co.uk" className="text-primary-dark hover:underline">support@findrelief.co.uk</a>.
+                For general or business enquiries, email <a href="mailto:hello@findrelief.co.uk" className="text-primary-dark hover:underline">hello@findrelief.co.uk</a>. For support, use <a href="mailto:support@findrelief.co.uk" className="text-primary-dark hover:underline">support@findrelief.co.uk</a>. Privacy and account-deletion information is available through the <a href="/privacy" className="text-primary-dark hover:underline">Privacy Policy</a>, <a href="/gdpr" className="text-primary-dark hover:underline">data-rights page</a>, and <a href="/delete-account" className="text-primary-dark hover:underline">account-deletion page</a>.
               </p>
             </section>
           </div>

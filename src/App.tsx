@@ -8,6 +8,7 @@ import Gdpr from '@/pages/Gdpr'
 import Contact from '@/pages/Contact'
 import Support from '@/pages/Support'
 import DataSources from '@/pages/DataSources'
+import DeleteAccount from '@/pages/DeleteAccount'
 import AddFacility from '@/pages/AddFacility'
 import ReportBug from '@/pages/ReportBug'
 import BlogIndex from '@/pages/BlogIndex'
@@ -33,6 +34,7 @@ function App() {
           <Route path={ROUTES.contact} element={<Contact />} />
           <Route path={ROUTES.support} element={<Support />} />
           <Route path={ROUTES.data} element={<DataSources />} />
+          <Route path={ROUTES.deleteAccount} element={<DeleteAccount />} />
           <Route path={ROUTES.addFacility} element={<AddFacility />} />
           <Route path={ROUTES.reportBug} element={<ReportBug />} />
           <Route path={ROUTES.blog} element={<BlogIndex />} />
