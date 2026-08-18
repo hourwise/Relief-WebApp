@@ -1,7 +1,7 @@
 # Relief Web — Current State (Source of Truth)
 
 > Authoritative status for the Relief public website.
-> Last updated: 2026-08-11
+> Last updated: 2026-08-18
 > Branch: `main` (production source branch)
 
 Status terms used throughout this document:
@@ -55,7 +55,8 @@ duplicate the mobile app.
 | `/data` | Data & Sources | VERIFIED |
 | `/privacy` | Privacy | VERIFIED (final legal review required) |
 | `/terms` | Terms | VERIFIED (final legal review required) |
-| `/gdpr` | GDPR rights | VERIFIED (legal review required; request form disabled) |
+| `/gdpr` | GDPR rights | VERIFIED (legal review required; email route and in-app access/deletion guidance) |
+| `/delete-account` | Account deletion | IMPLEMENTED (public information route; legal review required) |
 | `/contact` | Contact | VERIFIED (form IMPLEMENTED BUT DISABLED) |
 | `/add-facility` | Add Facility | VERIFIED (form IMPLEMENTED BUT DISABLED) |
 | `/report-bug` | Report Bug | VERIFIED (form IMPLEMENTED BUT DISABLED) |
@@ -76,7 +77,10 @@ Verified mobile capabilities (Android preview build):
 - Facility details and directions
 - Search
 - Favourites for signed-in users
-- Reports / corrections for signed-in users
+- Facility submissions, facility reports, temporary reports, corrections,
+  access-code contributions, and governed badges for signed-in users
+- In-app account deletion at `Profile → Delete account`
+- In-app versioned JSON export at `Profile → Privacy & Data → Download my data`
 - Filters backed by real live data: Cost (Any / Free / Paid), Open now,
   Open 24 hours, Accessible, RADAR Key, Baby changing, Gender-neutral,
   Family friendly, Staff nearby

@@ -84,6 +84,7 @@ export const ROUTES = {
   contact: '/contact',
   support: '/support',
   data: '/data',
+  deleteAccount: '/delete-account',
   addFacility: '/add-facility',
   reportBug: '/report-bug',
   blog: '/blog',

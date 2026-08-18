@@ -89,6 +89,10 @@ export const PAGE_META = {
     title: 'Your GDPR Rights',
     description: 'Understand your rights under GDPR and how to exercise them.',
   }),
+  deleteAccount: () => generateSEOMetadata({
+    title: 'Delete a Relief Account',
+    description: 'Learn how to delete a Relief account in the app or contact Relief if you need help.',
+  }),
   contact: () => generateSEOMetadata({
     title: 'Contact Us',
     description: 'Get in touch with the Relief team. We\'d love to hear from you.',
@@ -129,6 +133,7 @@ export const PAGE_META_BY_ROUTE: Record<string, () => SEOMetadata> = {
   [ROUTES.privacy]: PAGE_META.privacy,
   [ROUTES.terms]: PAGE_META.terms,
   [ROUTES.gdpr]: PAGE_META.gdpr,
+  [ROUTES.deleteAccount]: PAGE_META.deleteAccount,
   [ROUTES.addFacility]: PAGE_META.addFacility,
   [ROUTES.reportBug]: PAGE_META.reportBug,
   [ROUTES.blog]: PAGE_META.blog,

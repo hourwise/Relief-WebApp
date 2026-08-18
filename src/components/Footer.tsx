@@ -34,6 +34,7 @@ const Footer: React.FC = () => {
         { label: 'Privacy Policy', path: ROUTES.privacy },
         { label: 'Terms of Service', path: ROUTES.terms },
         { label: 'GDPR', path: ROUTES.gdpr },
+        { label: 'Delete an Account', path: ROUTES.deleteAccount },
       ],
     },
   ]
